@@ -1064,8 +1064,8 @@ code-point-at@^1.0.0:
   resolved "http://registry.npm.taobao.org/code-point-at/download/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
 color-convert@^1.9.0:
-  version "1.9.0"
-  resolved "http://registry.npm.taobao.org/color-convert/download/color-convert-1.9.0.tgz#1accf97dd739b983bf994d56fec8f95853641b7a"
+  version "1.9.1"
+  resolved "http://registry.npm.taobao.org/color-convert/download/color-convert-1.9.1.tgz#c1261107aeb2f294ebffec9ed9ecad529a6097ed"
   dependencies:
     color-name "^1.1.1"
 
@@ -1323,9 +1323,9 @@ eslint-plugin-flowtype@^2.35.0:
   dependencies:
     lodash "^4.15.0"
 
-eslint-plugin-graphql@^1.4.0-1:
-  version "1.4.0-1"
-  resolved "http://registry.npm.taobao.org/eslint-plugin-graphql/download/eslint-plugin-graphql-1.4.0-1.tgz#77e8adafcf82dfa233abf5ac0b8afcf71502429a"
+eslint-plugin-graphql@^1.4.1:
+  version "1.4.1"
+  resolved "http://registry.npm.taobao.org/eslint-plugin-graphql/download/eslint-plugin-graphql-1.4.1.tgz#8c7d49548a7fa47526a68255d80739ac3d018f4f"
   dependencies:
     graphql-config "^1.0.7"
     lodash "^4.11.1"
@@ -2542,9 +2542,9 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "http://registry.npm.taobao.org/preserve/download/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prettier@^1.8.1:
-  version "1.8.1"
-  resolved "http://registry.npm.taobao.org/prettier/download/prettier-1.8.1.tgz#91064d778c08c85ac1cbe6b23195c34310d039f9"
+prettier@^1.8.2:
+  version "1.8.2"
+  resolved "http://registry.npm.taobao.org/prettier/download/prettier-1.8.2.tgz#bff83e7fd573933c607875e5ba3abbdffb96aeb8"
 
 private@^0.1.6, private@^0.1.7:
   version "0.1.8"
@@ -2604,9 +2604,9 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-apollo@^2.0.0:
-  version "2.0.0"
-  resolved "http://registry.npm.taobao.org/react-apollo/download/react-apollo-2.0.0.tgz#c9cbda2956585d422800f1686d870258637170f8"
+react-apollo@^2.0.1:
+  version "2.0.1"
+  resolved "http://registry.npm.taobao.org/react-apollo/download/react-apollo-2.0.1.tgz#43997db9f294d81bd229eb705944fb36d5164607"
   dependencies:
     apollo-link "^1.0.0"
     hoist-non-react-statics "^2.2.0"
@@ -2631,9 +2631,9 @@ react-dock@^0.2.4:
     lodash.debounce "^3.1.1"
     prop-types "^15.5.8"
 
-react-dom@^16.0.0:
-  version "16.0.0"
-  resolved "http://registry.npm.taobao.org/react-dom/download/react-dom-16.0.0.tgz#9cc3079c3dcd70d4c6e01b84aab2a7e34c303f58"
+react-dom@^16.1.0:
+  version "16.1.0"
+  resolved "http://registry.npm.taobao.org/react-dom/download/react-dom-16.1.0.tgz#ab6fd2a285096f388aeba51919a573d06c9bdde4"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -2694,9 +2694,9 @@ react-router@^4.2.0:
     prop-types "^15.5.4"
     warning "^3.0.0"
 
-react@^16.0.0:
-  version "16.0.0"
-  resolved "http://registry.npm.taobao.org/react/download/react-16.0.0.tgz#ce7df8f1941b036f02b2cca9dbd0cb1f0e855e2d"
+react@^16.1.0:
+  version "16.1.0"
+  resolved "http://registry.npm.taobao.org/react/download/react-16.1.0.tgz#1c2bdac3c17fe7ee9282fa35aca6cc36387903e1"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -3242,33 +3242,6 @@ verror@1.10.0:
     assert-plus "^1.0.0"
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
-
-walkuere@^1.0.7-0:
-  version "1.0.7-0"
-  resolved "http://registry.npm.taobao.org/walkuere/download/walkuere-1.0.7-0.tgz#5e0816185ecfa43d91ba88f5685d7af14a88ae2b"
-  dependencies:
-    apollo-cache-inmemory "^1.1.0"
-    apollo-client "^2.0.2"
-    apollo-fetch "^0.6.0"
-    apollo-link "^1.0.0"
-    apollo-link-batch-http "^1.0.0"
-    apollo-link-error "^1.0.0"
-    apollo-link-http "^1.1.0"
-    apollo-link-ws "^1.0.0"
-    apollo-logger "^0.1.1"
-    graphql "^0.11.7"
-    graphql-tag "^2.5.0"
-    graphql-tools "^2.7.2"
-    immutable "^3.8.2"
-    react "^16.0.0"
-    react-apollo "^2.0.0"
-    react-dom "^16.0.0"
-    react-redux "^5.0.6"
-    react-router-dom "^4.2.2"
-    react-router-redux "^5.0.0-alpha.7"
-    redux "^3.7.2"
-    redux-immutable "^4.0.0"
-    redux-thunk "^2.2.0"
 
 warning@^3.0.0:
   version "3.0.0"
