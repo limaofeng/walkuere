@@ -1,6 +1,6 @@
 {
   "name": "walkuere",
-  "version": "1.0.7-5",
+  "version": "1.0.7-6",
   "description": "walkuere",
   "main": "lib/index.js",
   "scripts": {
