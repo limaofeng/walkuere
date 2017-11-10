@@ -5,7 +5,8 @@ import AREAS_QUERY from './graphqls/areas.graphql';
 
 const client = createClient({
   uri: 'http://dev.zbsg.com.cn/graphql',
-  wsUri: 'ws://dev.zbsg.com.cn:8090/subscribe'
+  wsUri: 'ws://dev.zbsg.com.cn:8090/subscribe',
+  webSocketImpl: require('ws')
 });
 
 apollo({ client });

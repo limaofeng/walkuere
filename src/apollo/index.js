@@ -9,15 +9,17 @@ import { WebSocketLink } from 'apollo-link-ws';
 import { ApolloLink } from 'apollo-link';
 import { LoggingLink } from 'apollo-logger';
 
-import errorAfterware from './middleware/error';
-
-/* eslint no-nested-ternary: 0 */
-const _global = typeof global !== 'undefined' ? global : typeof window !== 'undefined' ? window : {};
-const NativeWebSocket = _global.WebSocket || _global.MozWebSocket;
-
+// import errorAfterware from './middleware/error';
 let client: any;
 
-export const createClient = ({ uri, wsUri, middlewares = [], afterwares = [], logging = false }) => {
+export const createClient = ({
+  uri,
+  wsUri,
+  webSocketImpl = null,
+  middlewares = [],
+  afterwares = [],
+  logging = false
+}) => {
   if (client) {
     return client;
   }
@@ -50,7 +52,6 @@ export const createClient = ({ uri, wsUri, middlewares = [], afterwares = [], lo
     next();
   });
 
-  console.log(NativeWebSocket, require('ws'));
   const link = ApolloLink.split(
     operation => {
       const operationAST = getOperationAST(operation.query, operation.operationName);
@@ -58,7 +59,7 @@ export const createClient = ({ uri, wsUri, middlewares = [], afterwares = [], lo
     },
     new WebSocketLink({
       uri: wsUri,
-      webSocketImpl: NativeWebSocket || require('ws'),
+      webSocketImpl,
       options: {
         reconnect: true
       }
@@ -76,20 +77,13 @@ export const createClient = ({ uri, wsUri, middlewares = [], afterwares = [], lo
   return client;
 };
 
-export default function withApollo({
-  client: externalClient,
-  uri = 'http://localhost:8080/graphql',
-  middlewares = [],
-  afterwares = []
-}) {
-  if (client) {
+export default function withApollo({ client: externalClient, ...options }) {
+  if (externalClient) {
     client = externalClient;
   } else {
-    client = createClient(uri);
+    client = createClient(options);
   }
-  console.log(middlewares, afterwares, errorAfterware);
 
-  // fetch.applyMiddleware(middlewares).applyAfterware(afterwares);
   return WrappedComponent => () => (
     <ApolloProvider client={client}>
       <WrappedComponent client={client} />

@@ -16,7 +16,7 @@ const initialState = Immutable.Map();
 
 let store: any;
 
-const createReduxStore = (middlewares = [], reducers = {}, debug) => {
+export const createReduxStore = (middlewares = [], reducers = {}, debug) => {
   if (store) {
     store.replaceReducer(combineReducers(reducers));
     return store;
