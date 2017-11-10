@@ -17,6 +17,8 @@ script:
 deploy:
   provider: npm
   email: "limaofeng@msn.com"
+  script:
+    - yarn build
   api_key: $NPM_TOKEN
   on:
     tags: true
