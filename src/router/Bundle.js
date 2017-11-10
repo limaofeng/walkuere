@@ -1,14 +1,13 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class Bundle extends React.Component {
-  state = {
-    mod: null // short for "module" but that's a keyword in js, so "mod"
-  };
-
+class Bundle extends Component {
   // 加载初始状态
   componentWillMount() {
     this.load(this.props);
+    this.state = {
+      mod: null
+    };
   }
 
   componentWillReceiveProps(nextProps) {

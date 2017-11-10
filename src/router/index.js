@@ -42,7 +42,7 @@ const compatibleRouterMiddleware = () => next => action => {
   return next(action);
 };
 
-export const routerMiddlewares = history => [routerMiddleware(history), compatibleRouterMiddleware()];
+export const routerMiddlewares = history => [routerMiddleware(history), compatibleRouterMiddleware];
 
 export const { routerReducer } = require('react-router-redux');
 

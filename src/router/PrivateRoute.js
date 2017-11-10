@@ -2,8 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 
-@connect(({ modules }) => ({ user: modules.get('currentUser') ? modules.get('currentUser').toObject() : null }))
-export default class PrivateRoute extends Route {
+const mapStateToProps = ({ modules }) => ({
+  user: modules.get('currentUser') ? modules.get('currentUser').toObject() : null
+});
+
+class PrivateRoute extends Route {
   render() {
     const { user, ...route } = this.props;
     if (route.to) {
@@ -23,3 +26,5 @@ export default class PrivateRoute extends Route {
     );
   }
 }
+
+export default connect(mapStateToProps)(PrivateRoute);
