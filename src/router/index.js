@@ -33,7 +33,7 @@ function parseQueryString(url) {
 let history: any;
 
 // 解决 history 3.x 升级到 4.x 后， location 中不存在 query 的问题。避免修改原代码的兼容解决方案
-export const compatibleRouterMiddleware = () => next => action => {
+const compatibleRouterMiddleware = () => next => action => {
   const { type, payload } = action;
   if (type === '@@router/LOCATION_CHANGE') {
     payload.query = parseQueryString(payload.search);
