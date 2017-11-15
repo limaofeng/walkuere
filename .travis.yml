@@ -15,9 +15,8 @@ script:
   - yarn build
 
 before_deploy:
-  script:
-    - yarn build
-    - ls
+  - yarn build
+  - ls
   skip_cleanup: true
 
 deploy:
