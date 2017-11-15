@@ -16,7 +16,7 @@ const initialState = Immutable.Map();
 
 let store: any;
 
-export const createReduxStore = (reducers = {},state = {}, middlewares = [],  { debug }) => {
+export const createReduxStore = (reducers = {},initialState = {}, middlewares = [],  { debug }) => {
   if (store) {
     store.replaceReducer(combineReducers(reducers));
     return store;
@@ -30,7 +30,7 @@ export const createReduxStore = (reducers = {},state = {}, middlewares = [],  { 
   }
   return createStore(
     combineReducers(reducers),
-    {},
+    initialState,
     compose(
       applyMiddleware(defaultMiddleware.concat(...middlewares)),
       window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument(),
@@ -41,7 +41,7 @@ export const createReduxStore = (reducers = {},state = {}, middlewares = [],  { 
 
 export default function withRedux({ store: externalStore, middlewares = [], reducers = {}, debug = false }) {
   if (!externalStore) {
-    store = createReduxStore(middlewares, reducers, debug);
+    store = createReduxStore(reducers, initialState, middlewares, { debug });
   } else {
     store = externalStore;
   }
