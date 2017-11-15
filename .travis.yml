@@ -24,7 +24,6 @@ deploy:
   provider: npm
   email: "limaofeng@msn.com"
   api_key: $NPM_TOKEN
-  skip_cleanup: true
   on:
     tags: true
 
