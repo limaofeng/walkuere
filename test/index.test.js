@@ -1,3 +1,3 @@
-import { connector, redux, apollo } from './../src';
+import x, { connector, redux, apollo } from './../src';
 
-console.log(connector, redux, apollo);
+console.log(connector, redux, apollo, x);

@@ -12,7 +12,7 @@ import { LoggingLink } from 'apollo-logger';
 // import errorAfterware from './middleware/error';
 let client: any;
 
-export const createClient = ({
+export const createApolloClient = ({
   uri,
   wsUri,
   webSocketImpl = null,
@@ -81,7 +81,7 @@ export default function withApollo({ client: externalClient, ...options }) {
   if (externalClient) {
     client = externalClient;
   } else {
-    client = createClient(options);
+    client = createApolloClient(options);
   }
 
   return WrappedComponent => () => (

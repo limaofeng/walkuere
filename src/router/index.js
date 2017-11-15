@@ -42,6 +42,10 @@ const compatibleRouterMiddleware = () => next => action => {
   return next(action);
 };
 
+export const PrivateRoute = require('./PrivateRoute');
+
+export const Route = require('./Route');
+
 export const routerMiddlewares = history => [routerMiddleware(history), compatibleRouterMiddleware];
 
 export const { routerReducer } = require('react-router-redux');

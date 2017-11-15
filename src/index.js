@@ -3,6 +3,8 @@ export const redux = require('./redux').default;
 export const apollo = require('./apollo').default;
 export const router = require('./router').default;
 
-export const { createClient, createReduxStore } = require('./apollo');
-export const { routerMiddlewares, routerReducer, createHistory } = require('./router');
-export const PrivateRoute = require('./router/PrivateRoute').default
+export const { createReduxStore } = require('./redux');
+export const { createApolloClient } = require('./apollo');
+export const { routerMiddlewares, routerReducer, createHistory, PrivateRoute, Route } = require('./router');
+
+export default connector;
