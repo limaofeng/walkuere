@@ -19,10 +19,9 @@ before_deploy:
   - ls
 
 deploy:
+  skip_cleanup: true
   provider: npm
   email: "limaofeng@msn.com"
   api_key: $NPM_TOKEN
-  local-dir: lib
-  skip_cleanup: true
   on:
     tags: true
