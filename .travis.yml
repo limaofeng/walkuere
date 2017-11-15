@@ -2,6 +2,8 @@ language: node_js
 node_js:
   - "7"
 
+dist: dist
+
 cache:
   yarn: true
   directories:
@@ -14,12 +16,10 @@ install:
 script:
   - yarn build
 
-before_deploy:
-  - yarn build
-
 deploy:
   provider: npm
   email: "limaofeng@msn.com"
   api_key: $NPM_TOKEN
+  skip_cleanup: true
   on:
     tags: true
