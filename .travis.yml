@@ -15,10 +15,7 @@ script:
   - yarn build
 
 before_deploy:
-  - yarn build
-  - ls
-
-addons:
+  - echo "/test" >> .npmignore
 
 deploy:
   provider: npm
