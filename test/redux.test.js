@@ -1,9 +1,14 @@
-import { redux } from './../src';
+import { redux, routerMiddlewares, routerReducer } from './../src';
 
 const { createReduxStore } = redux;
 
 console.log(redux, createReduxStore);
 
-const reduxStore = redux({});
+const reduxStore = redux({
+  middlewares: routerMiddlewares(),
+  reducers: {
+    routing: routerReducer
+  }
+});
 
 console.log(reduxStore());

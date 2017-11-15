@@ -42,9 +42,9 @@ const compatibleRouterMiddleware = () => next => action => {
   return next(action);
 };
 
-export const PrivateRoute = require('./PrivateRoute');
+export const PrivateRoute = require('./PrivateRoute').default;
 
-export const Route = require('./Route');
+export const Route = require('./Route').default;
 
 export const routerMiddlewares = history => [routerMiddleware(history), compatibleRouterMiddleware];
 
