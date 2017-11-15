@@ -17,7 +17,6 @@ script:
 before_deploy:
   - yarn build
   - ls
-  skip_cleanup: true
 
 deploy:
   provider: npm
