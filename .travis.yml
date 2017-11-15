@@ -18,14 +18,11 @@ before_deploy:
   - yarn build
   - ls
 
-addons:
-  artifacts:
-    working_dir: lib
-
 deploy:
   provider: npm
   email: "limaofeng@msn.com"
   api_key: $NPM_TOKEN
+  local-dir: lib
   skip_cleanup: true
   on:
     tags: true
