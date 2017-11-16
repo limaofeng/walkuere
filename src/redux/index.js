@@ -12,7 +12,7 @@ function getDebugSessionKey() {
   return matches && matches.length > 0 ? matches[1] : null;
 }
 
-const initialState = Immutable.Map();
+const initialState = {};
 
 let store: any;
 
