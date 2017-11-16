@@ -25,14 +25,14 @@ export const createReduxStore = (reducers = {},initialState = {}, middlewares = 
     return createStore(
       combineReducers(reducers),
       initialState,
-      applyMiddleware(defaultMiddleware.concat(...middlewares))
+      applyMiddleware(...defaultMiddleware.concat(...middlewares))
     );
   }
   return createStore(
     combineReducers(reducers),
     initialState,
     compose(
-      applyMiddleware(defaultMiddleware.concat(...middlewares)),
+      applyMiddleware(...defaultMiddleware.concat(...middlewares)),
       window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument(),
       persistState(getDebugSessionKey())
     )
