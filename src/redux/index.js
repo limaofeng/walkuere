@@ -1,5 +1,4 @@
 import React from 'react';
-import Immutable from 'immutable';
 import { Provider } from 'react-redux';
 
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';

@@ -28,7 +28,6 @@
   "peerDependencies": {
     "apollo-client": "^2.0.2",
     "graphql": "^0.11.7",
-    "immutable": "^3.8.2",
     "react": "^16.1.1",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2"
@@ -47,7 +46,6 @@
     "graphql-tag": "^2.5.0",
     "graphql-tools": "^2.7.2",
     "history": "^4.7.2",
-    "immutable": "^3.8.2",
     "react": "^16.1.1",
     "react-apollo": "^2.0.1",
     "react-dom": "^16.1.0",
@@ -55,7 +53,6 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.7",
     "redux": "^3.7.2",
-    "redux-immutable": "^4.0.0",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
