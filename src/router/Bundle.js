@@ -2,12 +2,15 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Bundle extends Component {
-  // 加载初始状态
-  componentWillMount() {
-    this.load(this.props);
+  constructor(props) {
+    super(props);
     this.state = {
       mod: null
     };
+  }
+  // 加载初始状态
+  componentWillMount() {
+    this.load(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
