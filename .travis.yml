@@ -13,10 +13,7 @@ install:
   
 script:
   - yarn build
-
-before_deploy:
-  - echo "/test" >> .npmignore
-
+  
 deploy:
   provider: npm
   email: "limaofeng@msn.com"
