@@ -1,5 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { persistState } from 'redux-devtools';
 
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import defaultMiddleware from './middleware';
@@ -25,7 +26,6 @@ export const createReduxStore = (reducers = {}, initialState = {}, middlewares =
       applyMiddleware(...defaultMiddleware.concat(...middlewares))
     );
   }
-  const persistState = require('redux-devtools').default;
   return createStore(
     combineReducers(reducers),
     initialState,
@@ -47,7 +47,6 @@ export default function withRedux({ store: externalStore, middlewares = [], redu
     if (debug && !window.devToolsExtension) {
       return (
         <Provider store={store}>
-          <DevTools store={store} />
           <WrappedComponent store={store} />
         </Provider>
       );
