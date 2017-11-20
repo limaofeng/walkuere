@@ -2,9 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
-import { persistState } from 'redux-devtools';
 import defaultMiddleware from './middleware';
-import DevTools from './DevTools';
 
 function getDebugSessionKey() {
   const matches = window.location.href.match(/[?&]debug_session=([^&]+)\b/);
@@ -20,19 +18,20 @@ export const createReduxStore = (reducers = {}, initialState = {}, middlewares =
     store.replaceReducer(combineReducers(reducers));
     return store;
   }
-  if (!debug) {
+  if (!debug || !window.devToolsExtension) {
     return createStore(
       combineReducers(reducers),
       initialState,
       applyMiddleware(...defaultMiddleware.concat(...middlewares))
     );
   }
+  const persistState = require('redux-devtools').default;
   return createStore(
     combineReducers(reducers),
     initialState,
     compose(
       applyMiddleware(...defaultMiddleware.concat(...middlewares)),
-      window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument(),
+      window.devToolsExtension(),
       persistState(getDebugSessionKey())
     )
   );
