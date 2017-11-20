@@ -1,0 +1,57 @@
+{
+  "env": {
+    "browser": true,
+    "jest": true,
+    "jquery": true
+  },
+  "globals": {
+    "__PUBLIC_URL__": true
+  },
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "plugins": ["react", "jsx-a11y", "import", "prettier"],
+  "rules": {
+    "indent": 0,
+    "space-before-function-paren": 0,
+    "prettier/prettier": "error",
+    "global-require": "off",
+    "comma-dangle": 0,
+    "no-restricted-syntax": 0,
+    "no-use-before-define": 0,
+    "no-param-reassign": "warn",
+    "object-curly-newline": "off",
+    "function-paren-newline": "off",
+    "react/prefer-stateless-function": "warn",
+    "no-console": 1,
+    "max-len": [2, 120, 4],
+    "arrow-parens": ["error", "as-needed"],
+    "consistent-return": 0,
+    "no-confusing-arrow": 0,
+    "no-shadow": 0,
+    "no-underscore-dangle": 0,
+    "no-debugger": 1,
+    "no-continue": "warn",
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "semi": 2,
+    "import/no-extraneous-dependencies": 0,
+    "import/prefer-default-export": 0,
+    "import/no-duplicates": 0,
+    "jsx-a11y/label-has-for": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "react/no-multi-comp": 0,
+    "react/no-array-index-key": [1],
+    "react/forbid-prop-types": 0,
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ]
+  }
+}

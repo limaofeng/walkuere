@@ -15,7 +15,7 @@ const initialState = {};
 
 let store: any;
 
-export const createReduxStore = (reducers = {},initialState = {}, middlewares = [],  { debug }) => {
+export const createReduxStore = (reducers = {}, initialState = {}, middlewares = [], { debug }) => {
   if (store) {
     store.replaceReducer(combineReducers(reducers));
     return store;
