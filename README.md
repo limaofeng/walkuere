@@ -1,5 +1,7 @@
 # Walkuere
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/limaofeng/walkuere.svg)](https://greenkeeper.io/)
+
 该插件主要实现通过装饰器可以快速集成 Redux React-Router Apollo
 
 ## 导包
