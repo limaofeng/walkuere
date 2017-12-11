@@ -192,9 +192,11 @@ apollo-link-dedup@^1.0.0:
   version "1.0.2"
   resolved "http://registry.npm.taobao.org/apollo-link-dedup/download/apollo-link-dedup-1.0.2.tgz#bab659dde41f8dd627839142d4dad90e55251110"
 
-apollo-link-error@^1.0.1:
-  version "1.0.1"
-  resolved "http://registry.npm.taobao.org/apollo-link-error/download/apollo-link-error-1.0.1.tgz#c0185d95477318f029900aff3bdf07853d19e442"
+apollo-link-error@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/apollo-link-error/-/apollo-link-error-1.0.3.tgz#2c679d2e6a2df09a9ae3f70d23c64af922a801a2"
+  dependencies:
+    apollo-link "^1.0.6"
 
 apollo-link-http@^1.2.0:
   version "1.2.0"
@@ -207,6 +209,14 @@ apollo-link-ws@^1.0.1:
 apollo-link@^1.0.0, apollo-link@^1.0.3:
   version "1.0.3"
   resolved "http://registry.npm.taobao.org/apollo-link/download/apollo-link-1.0.3.tgz#759c36abeeb99e227eca45f919ee07fb8fee911e"
+  dependencies:
+    "@types/zen-observable" "0.5.3"
+    apollo-utilities "^1.0.0"
+    zen-observable "^0.6.0"
+
+apollo-link@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-1.0.6.tgz#ed5e975b4582b2471fd8eebf9efbd6691188dc0a"
   dependencies:
     "@types/zen-observable" "0.5.3"
     apollo-utilities "^1.0.0"
