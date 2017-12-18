@@ -27,7 +27,7 @@
   "homepage": "https://github.com/limaofeng/hermes#readme",
   "peerDependencies": {
     "apollo-client": "^2.0.3",
-    "graphql": "^0.11.7",
+    "graphql": "^0.12.3",
     "react": "^16.1.1",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2"
@@ -42,7 +42,7 @@
     "apollo-link-http": "^1.2.0",
     "apollo-link-ws": "^1.0.1",
     "apollo-logger": "^0.1.1",
-    "graphql": "^0.11.7",
+    "graphql": "^0.12.3",
     "graphql-tag": "^2.5.0",
     "graphql-tools": "^2.7.2",
     "history": "^4.7.2",
