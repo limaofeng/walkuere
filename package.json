@@ -33,7 +33,7 @@
     "redux": "^3.7.2"
   },
   "dependencies": {
-    "apollo-cache-inmemory": "^1.1.4",
+    "apollo-cache-inmemory": "^1.1.7",
     "apollo-client": "^2.0.3",
     "apollo-fetch": "^0.7.0",
     "apollo-link": "^1.0.3",
