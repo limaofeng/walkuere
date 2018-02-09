@@ -204,13 +204,21 @@ apollo-link-ws@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/apollo-link-ws/download/apollo-link-ws-1.0.1.tgz#305f6cf1338b5c86a06644dcf77bf59455df1db9"
 
-apollo-link@^1.0.0, apollo-link@^1.0.3:
+apollo-link@^1.0.0:
   version "1.0.3"
   resolved "http://registry.npm.taobao.org/apollo-link/download/apollo-link-1.0.3.tgz#759c36abeeb99e227eca45f919ee07fb8fee911e"
   dependencies:
     "@types/zen-observable" "0.5.3"
     apollo-utilities "^1.0.0"
     zen-observable "^0.6.0"
+
+apollo-link@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-1.1.0.tgz#9d573b16387ee0d8e147b1f319e42c8c562f18f7"
+  dependencies:
+    "@types/zen-observable" "0.5.3"
+    apollo-utilities "^1.0.0"
+    zen-observable "^0.7.0"
 
 apollo-logger@^0.1.1:
   version "0.1.1"
@@ -3234,3 +3242,7 @@ yallist@^2.1.2:
 zen-observable@^0.6.0:
   version "0.6.0"
   resolved "http://registry.npm.taobao.org/zen-observable/download/zen-observable-0.6.0.tgz#8a6157ed15348d185d948cfc4a59d90a2c0f70ee"
+
+zen-observable@^0.7.0:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.7.1.tgz#f84075c0ee085594d3566e1d6454207f126411b3"
