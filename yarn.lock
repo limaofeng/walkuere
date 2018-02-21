@@ -59,6 +59,10 @@
   version "2.0.45"
   resolved "http://registry.npm.taobao.org/@types/async/download/@types/async-2.0.45.tgz#0cfe971d7ed5542695740338e0455c91078a0e83"
 
+"@types/node@^9.4.6":
+  version "9.4.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-9.4.6.tgz#d8176d864ee48753d053783e4e463aec86b8d82e"
+
 "@types/zen-observable@0.5.3", "@types/zen-observable@^0.5.3":
   version "0.5.3"
   resolved "http://registry.npm.taobao.org/@types/zen-observable/download/@types/zen-observable-0.5.3.tgz#91b728599544efbb7386d8b6633693a3c2e7ade5"
@@ -192,9 +196,11 @@ apollo-link-dedup@^1.0.0:
   version "1.0.2"
   resolved "http://registry.npm.taobao.org/apollo-link-dedup/download/apollo-link-dedup-1.0.2.tgz#bab659dde41f8dd627839142d4dad90e55251110"
 
-apollo-link-error@^1.0.1:
-  version "1.0.1"
-  resolved "http://registry.npm.taobao.org/apollo-link-error/download/apollo-link-error-1.0.1.tgz#c0185d95477318f029900aff3bdf07853d19e442"
+apollo-link-error@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/apollo-link-error/-/apollo-link-error-1.0.6.tgz#a4bc5b292f71e6da5b9ba5ed9ef19fdd516dbb1a"
+  dependencies:
+    apollo-link "^1.2.0"
 
 apollo-link-http@^1.2.0:
   version "1.2.0"
@@ -211,6 +217,15 @@ apollo-link@^1.0.0, apollo-link@^1.0.3:
     "@types/zen-observable" "0.5.3"
     apollo-utilities "^1.0.0"
     zen-observable "^0.6.0"
+
+apollo-link@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-1.2.0.tgz#1abba5456eb35fc8b8a79f3be421e683a9ecfc41"
+  dependencies:
+    "@types/node" "^9.4.6"
+    "@types/zen-observable" "0.5.3"
+    apollo-utilities "^1.0.0"
+    zen-observable "^0.8.0"
 
 apollo-logger@^0.1.1:
   version "0.1.1"
@@ -3234,3 +3249,7 @@ yallist@^2.1.2:
 zen-observable@^0.6.0:
   version "0.6.0"
   resolved "http://registry.npm.taobao.org/zen-observable/download/zen-observable-0.6.0.tgz#8a6157ed15348d185d948cfc4a59d90a2c0f70ee"
+
+zen-observable@^0.8.0:
+  version "0.8.6"
+  resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.8.6.tgz#e2419311497019419d7bb56d8f6a56356a607272"
