@@ -59,7 +59,11 @@
   version "2.0.45"
   resolved "http://registry.npm.taobao.org/@types/async/download/@types/async-2.0.45.tgz#0cfe971d7ed5542695740338e0455c91078a0e83"
 
-"@types/zen-observable@0.5.3", "@types/zen-observable@^0.5.3":
+"@types/node@^9.4.6":
+  version "9.4.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-9.4.6.tgz#d8176d864ee48753d053783e4e463aec86b8d82e"
+
+"@types/zen-observable@^0.5.3":
   version "0.5.3"
   resolved "http://registry.npm.taobao.org/@types/zen-observable/download/@types/zen-observable-0.5.3.tgz#91b728599544efbb7386d8b6633693a3c2e7ade5"
 
@@ -138,13 +142,7 @@ apollo-cache-inmemory@^1.1.4:
     apollo-utilities "^1.0.3"
     graphql-anywhere "^4.0.1"
 
-apollo-cache@^1.0.1:
-  version "1.0.1"
-  resolved "http://registry.npm.taobao.org/apollo-cache/download/apollo-cache-1.0.1.tgz#66c16141173bc752d3ad3dce990310c10dfc4076"
-  dependencies:
-    apollo-utilities "^1.0.2"
-
-apollo-cache@^1.0.2:
+apollo-cache@^1.0.1, apollo-cache@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.0.2.tgz#e3df98696c648649d16a6c3ca9c19e90a556effa"
   dependencies:
@@ -196,21 +194,30 @@ apollo-link-error@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/apollo-link-error/download/apollo-link-error-1.0.1.tgz#c0185d95477318f029900aff3bdf07853d19e442"
 
+apollo-link-http-common@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/apollo-link-http-common/-/apollo-link-http-common-0.2.2.tgz#ac8a1810eca6a7ed37a34baeeb0a55752e6a0e30"
+  dependencies:
+    apollo-link "^1.2.1"
+
 apollo-link-http@^1.2.0:
-  version "1.2.0"
-  resolved "http://registry.npm.taobao.org/apollo-link-http/download/apollo-link-http-1.2.0.tgz#48464c2ebfa6474f7a89908696827d66b2deb5cc"
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/apollo-link-http/-/apollo-link-http-1.5.2.tgz#cac4202b7f802869f892397f989d002c4ebb3b56"
+  dependencies:
+    apollo-link "^1.2.1"
+    apollo-link-http-common "^0.2.2"
 
 apollo-link-ws@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/apollo-link-ws/download/apollo-link-ws-1.0.1.tgz#305f6cf1338b5c86a06644dcf77bf59455df1db9"
 
-apollo-link@^1.0.0, apollo-link@^1.0.3:
-  version "1.0.3"
-  resolved "http://registry.npm.taobao.org/apollo-link/download/apollo-link-1.0.3.tgz#759c36abeeb99e227eca45f919ee07fb8fee911e"
+apollo-link@^1.0.0, apollo-link@^1.0.3, apollo-link@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-1.2.1.tgz#c120b16059f9bd93401b9f72b94d2f80f3f305d2"
   dependencies:
-    "@types/zen-observable" "0.5.3"
+    "@types/node" "^9.4.6"
     apollo-utilities "^1.0.0"
-    zen-observable "^0.6.0"
+    zen-observable-ts "^0.8.6"
 
 apollo-logger@^0.1.1:
   version "0.1.1"
@@ -218,11 +225,7 @@ apollo-logger@^0.1.1:
   dependencies:
     debug "^3.0.1"
 
-apollo-utilities@^1.0.0, apollo-utilities@^1.0.1, apollo-utilities@^1.0.2:
-  version "1.0.2"
-  resolved "http://registry.npm.taobao.org/apollo-utilities/download/apollo-utilities-1.0.2.tgz#bcf348a7e613e82e2624ddb5be2b9f6bf1259c6d"
-
-apollo-utilities@^1.0.3:
+apollo-utilities@^1.0.0, apollo-utilities@^1.0.1, apollo-utilities@^1.0.2, apollo-utilities@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.3.tgz#bf435277609850dd442cf1d5c2e8bc6655eaa943"
 
@@ -3205,15 +3208,7 @@ write@^0.2.1:
   dependencies:
     mkdirp "^0.5.1"
 
-ws@^3.0.0:
-  version "3.3.1"
-  resolved "http://registry.npm.taobao.org/ws/download/ws-3.3.1.tgz#d97e34dee06a1190c61ac1e95f43cb60b78cf939"
-  dependencies:
-    async-limiter "~1.0.0"
-    safe-buffer "~5.1.0"
-    ultron "~1.1.0"
-
-ws@^3.3.2:
+ws@^3.0.0, ws@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/ws/-/ws-3.3.2.tgz#96c1d08b3fefda1d5c1e33700d3bfaa9be2d5608"
   dependencies:
@@ -3231,6 +3226,16 @@ yallist@^2.1.2:
   version "2.1.2"
   resolved "http://registry.npm.taobao.org/yallist/download/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
 
+zen-observable-ts@^0.8.6:
+  version "0.8.8"
+  resolved "https://registry.yarnpkg.com/zen-observable-ts/-/zen-observable-ts-0.8.8.tgz#1a586dc204fa5632a88057f879500e0d2ba06869"
+  dependencies:
+    zen-observable "^0.7.0"
+
 zen-observable@^0.6.0:
   version "0.6.0"
   resolved "http://registry.npm.taobao.org/zen-observable/download/zen-observable-0.6.0.tgz#8a6157ed15348d185d948cfc4a59d90a2c0f70ee"
+
+zen-observable@^0.7.0:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.7.1.tgz#f84075c0ee085594d3566e1d6454207f126411b3"
