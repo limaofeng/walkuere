@@ -138,13 +138,7 @@ apollo-cache-inmemory@^1.1.4:
     apollo-utilities "^1.0.3"
     graphql-anywhere "^4.0.1"
 
-apollo-cache@^1.0.1:
-  version "1.0.1"
-  resolved "http://registry.npm.taobao.org/apollo-cache/download/apollo-cache-1.0.1.tgz#66c16141173bc752d3ad3dce990310c10dfc4076"
-  dependencies:
-    apollo-utilities "^1.0.2"
-
-apollo-cache@^1.0.2:
+apollo-cache@^1.0.1, apollo-cache@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.0.2.tgz#e3df98696c648649d16a6c3ca9c19e90a556effa"
   dependencies:
@@ -218,11 +212,7 @@ apollo-logger@^0.1.1:
   dependencies:
     debug "^3.0.1"
 
-apollo-utilities@^1.0.0, apollo-utilities@^1.0.1, apollo-utilities@^1.0.2:
-  version "1.0.2"
-  resolved "http://registry.npm.taobao.org/apollo-utilities/download/apollo-utilities-1.0.2.tgz#bcf348a7e613e82e2624ddb5be2b9f6bf1259c6d"
-
-apollo-utilities@^1.0.3:
+apollo-utilities@^1.0.0, apollo-utilities@^1.0.1, apollo-utilities@^1.0.2, apollo-utilities@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.3.tgz#bf435277609850dd442cf1d5c2e8bc6655eaa943"
 
@@ -1314,9 +1304,9 @@ eslint-import-resolver-node@^0.3.1:
     debug "^2.6.8"
     resolve "^1.2.0"
 
-eslint-loader@^1.9.0:
-  version "1.9.0"
-  resolved "http://registry.npm.taobao.org/eslint-loader/download/eslint-loader-1.9.0.tgz#7e1be9feddca328d3dcfaef1ad49d5beffe83a13"
+eslint-loader@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-loader/-/eslint-loader-2.0.0.tgz#d136619b5c684e36531ffc28c60a56e404608f5d"
   dependencies:
     loader-fs-cache "^1.0.0"
     loader-utils "^1.0.2"
@@ -3205,15 +3195,7 @@ write@^0.2.1:
   dependencies:
     mkdirp "^0.5.1"
 
-ws@^3.0.0:
-  version "3.3.1"
-  resolved "http://registry.npm.taobao.org/ws/download/ws-3.3.1.tgz#d97e34dee06a1190c61ac1e95f43cb60b78cf939"
-  dependencies:
-    async-limiter "~1.0.0"
-    safe-buffer "~5.1.0"
-    ultron "~1.1.0"
-
-ws@^3.3.2:
+ws@^3.0.0, ws@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/ws/-/ws-3.3.2.tgz#96c1d08b3fefda1d5c1e33700d3bfaa9be2d5608"
   dependencies:
