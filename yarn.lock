@@ -59,7 +59,11 @@
   version "2.0.45"
   resolved "http://registry.npm.taobao.org/@types/async/download/@types/async-2.0.45.tgz#0cfe971d7ed5542695740338e0455c91078a0e83"
 
-"@types/zen-observable@0.5.3", "@types/zen-observable@^0.5.3":
+"@types/node@^9.4.6":
+  version "9.4.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-9.4.6.tgz#d8176d864ee48753d053783e4e463aec86b8d82e"
+
+"@types/zen-observable@^0.5.3":
   version "0.5.3"
   resolved "http://registry.npm.taobao.org/@types/zen-observable/download/@types/zen-observable-0.5.3.tgz#91b728599544efbb7386d8b6633693a3c2e7ade5"
 
@@ -158,12 +162,6 @@ apollo-client@^2.0.3:
   optionalDependencies:
     "@types/async" "2.0.45"
 
-apollo-fetch@^0.6.0:
-  version "0.6.0"
-  resolved "http://registry.npm.taobao.org/apollo-fetch/download/apollo-fetch-0.6.0.tgz#aae9b28c117af344b091ec8ba4d1a5aa0474dc5d"
-  dependencies:
-    isomorphic-fetch "^2.2.1"
-
 apollo-fetch@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/apollo-fetch/-/apollo-fetch-0.7.0.tgz#63c255a0ccb1b4c473524d8f9b536d72438bd3e7"
@@ -171,16 +169,18 @@ apollo-fetch@^0.7.0:
     cross-fetch "^1.0.0"
 
 apollo-link-batch-http@^1.0.1:
-  version "1.0.1"
-  resolved "http://registry.npm.taobao.org/apollo-link-batch-http/download/apollo-link-batch-http-1.0.1.tgz#81ea211303b410afaefbf8c6d9f37053d75454ea"
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/apollo-link-batch-http/-/apollo-link-batch-http-1.2.0.tgz#912bfaf43e2671db1868e76a37a393eb0cb03924"
   dependencies:
-    apollo-fetch "^0.6.0"
-    apollo-link-batch "^1.0.1"
-    graphql "^0.11.0"
+    apollo-link "^1.2.1"
+    apollo-link-batch "^1.1.1"
+    apollo-link-http-common "^0.2.2"
 
-apollo-link-batch@^1.0.1:
-  version "1.0.1"
-  resolved "http://registry.npm.taobao.org/apollo-link-batch/download/apollo-link-batch-1.0.1.tgz#b3c336f117dfa981a02b3963c166dc140b073dbd"
+apollo-link-batch@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/apollo-link-batch/-/apollo-link-batch-1.1.1.tgz#2f40ad629606d1fa55329ab5d2891af1881448b0"
+  dependencies:
+    apollo-link "^1.2.1"
 
 apollo-link-dedup@^1.0.0:
   version "1.0.2"
@@ -190,6 +190,12 @@ apollo-link-error@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/apollo-link-error/download/apollo-link-error-1.0.1.tgz#c0185d95477318f029900aff3bdf07853d19e442"
 
+apollo-link-http-common@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/apollo-link-http-common/-/apollo-link-http-common-0.2.2.tgz#ac8a1810eca6a7ed37a34baeeb0a55752e6a0e30"
+  dependencies:
+    apollo-link "^1.2.1"
+
 apollo-link-http@^1.2.0:
   version "1.2.0"
   resolved "http://registry.npm.taobao.org/apollo-link-http/download/apollo-link-http-1.2.0.tgz#48464c2ebfa6474f7a89908696827d66b2deb5cc"
@@ -198,13 +204,13 @@ apollo-link-ws@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/apollo-link-ws/download/apollo-link-ws-1.0.1.tgz#305f6cf1338b5c86a06644dcf77bf59455df1db9"
 
-apollo-link@^1.0.0, apollo-link@^1.0.3:
-  version "1.0.3"
-  resolved "http://registry.npm.taobao.org/apollo-link/download/apollo-link-1.0.3.tgz#759c36abeeb99e227eca45f919ee07fb8fee911e"
+apollo-link@^1.0.0, apollo-link@^1.0.3, apollo-link@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-1.2.1.tgz#c120b16059f9bd93401b9f72b94d2f80f3f305d2"
   dependencies:
-    "@types/zen-observable" "0.5.3"
+    "@types/node" "^9.4.6"
     apollo-utilities "^1.0.0"
-    zen-observable "^0.6.0"
+    zen-observable-ts "^0.8.6"
 
 apollo-logger@^0.1.1:
   version "0.1.1"
@@ -1758,7 +1764,7 @@ graphql-tools@^2.7.2:
     deprecated-decorator "^0.1.6"
     uuid "^3.1.0"
 
-graphql@^0.11.0, graphql@^0.11.6, graphql@^0.11.7:
+graphql@^0.11.6, graphql@^0.11.7:
   version "0.11.7"
   resolved "http://registry.npm.taobao.org/graphql/download/graphql-0.11.7.tgz#e5abaa9cb7b7cccb84e9f0836bf4370d268750c6"
   dependencies:
@@ -2043,7 +2049,7 @@ isobject@^2.0.0:
   dependencies:
     isarray "1.0.0"
 
-isomorphic-fetch@^2.1.1, isomorphic-fetch@^2.2.1:
+isomorphic-fetch@^2.1.1:
   version "2.2.1"
   resolved "http://registry.npm.taobao.org/isomorphic-fetch/download/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
   dependencies:
@@ -3220,6 +3226,16 @@ yallist@^2.1.2:
   version "2.1.2"
   resolved "http://registry.npm.taobao.org/yallist/download/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
 
+zen-observable-ts@^0.8.6:
+  version "0.8.8"
+  resolved "https://registry.yarnpkg.com/zen-observable-ts/-/zen-observable-ts-0.8.8.tgz#1a586dc204fa5632a88057f879500e0d2ba06869"
+  dependencies:
+    zen-observable "^0.7.0"
+
 zen-observable@^0.6.0:
   version "0.6.0"
   resolved "http://registry.npm.taobao.org/zen-observable/download/zen-observable-0.6.0.tgz#8a6157ed15348d185d948cfc4a59d90a2c0f70ee"
+
+zen-observable@^0.7.0:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.7.1.tgz#f84075c0ee085594d3566e1d6454207f126411b3"
