@@ -164,15 +164,21 @@ apollo-cache@^1.1.4:
   dependencies:
     apollo-utilities "^1.0.8"
 
+apollo-cache@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.7.tgz#5817018a2fbfc05a21ba319bd17a3e7538110cc5"
+  dependencies:
+    apollo-utilities "^1.0.11"
+
 apollo-client@^2.2.5:
-  version "2.2.5"
-  resolved "http://registry.npm.taobao.org/apollo-client/download/apollo-client-2.2.5.tgz#bc00704aa181d0ec299fd5bb2b72d0b44800f5d0"
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.2.8.tgz#b604d31ab2d2dd00db3105d8793b93ee02ce567e"
   dependencies:
     "@types/zen-observable" "^0.5.3"
-    apollo-cache "^1.1.4"
+    apollo-cache "^1.1.7"
     apollo-link "^1.0.0"
     apollo-link-dedup "^1.0.0"
-    apollo-utilities "^1.0.8"
+    apollo-utilities "^1.0.11"
     symbol-observable "^1.0.2"
     zen-observable "^0.7.0"
   optionalDependencies:
@@ -252,6 +258,10 @@ apollo-logger@^0.1.1:
 apollo-utilities@^1.0.0, apollo-utilities@^1.0.1:
   version "1.0.2"
   resolved "http://registry.npm.taobao.org/apollo-utilities/download/apollo-utilities-1.0.2.tgz#bcf348a7e613e82e2624ddb5be2b9f6bf1259c6d"
+
+apollo-utilities@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.11.tgz#cd36bfa6e5c04eea2caf0c204a0f38a0ad550802"
 
 apollo-utilities@^1.0.8:
   version "1.0.8"
@@ -1168,13 +1178,6 @@ cross-fetch@2.0.0:
   resolved "http://registry.npm.taobao.org/cross-fetch/download/cross-fetch-2.0.0.tgz#a17475449561e0f325146cea636a8619efb9b382"
   dependencies:
     node-fetch "2.0.0"
-    whatwg-fetch "2.0.3"
-
-cross-fetch@^1.0.0:
-  version "1.1.1"
-  resolved "http://registry.npm.taobao.org/cross-fetch/download/cross-fetch-1.1.1.tgz#dede6865ae30f37eae62ac90ebb7bdac002b05a0"
-  dependencies:
-    node-fetch "1.7.3"
     whatwg-fetch "2.0.3"
 
 cross-fetch@^1.0.0:
