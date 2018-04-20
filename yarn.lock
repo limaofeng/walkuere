@@ -1172,13 +1172,6 @@ cross-fetch@2.0.0:
 
 cross-fetch@^1.0.0:
   version "1.1.1"
-  resolved "http://registry.npm.taobao.org/cross-fetch/download/cross-fetch-1.1.1.tgz#dede6865ae30f37eae62ac90ebb7bdac002b05a0"
-  dependencies:
-    node-fetch "1.7.3"
-    whatwg-fetch "2.0.3"
-
-cross-fetch@^1.0.0:
-  version "1.1.1"
   resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-1.1.1.tgz#dede6865ae30f37eae62ac90ebb7bdac002b05a0"
   dependencies:
     node-fetch "1.7.3"
@@ -3076,8 +3069,8 @@ strip-json-comments@~2.0.1:
   resolved "http://registry.npm.taobao.org/strip-json-comments/download/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
 subscriptions-transport-ws@^0.9.6:
-  version "0.9.6"
-  resolved "http://registry.npm.taobao.org/subscriptions-transport-ws/download/subscriptions-transport-ws-0.9.6.tgz#5ff86a0746316ca3eb2423b118b8bc74a6793e1b"
+  version "0.9.8"
+  resolved "https://registry.yarnpkg.com/subscriptions-transport-ws/-/subscriptions-transport-ws-0.9.8.tgz#3a26ab96e06f78cf4ace8d083f6227fa55970947"
   dependencies:
     backo2 "^1.0.2"
     eventemitter3 "^2.0.3"
