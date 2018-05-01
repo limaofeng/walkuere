@@ -41,7 +41,7 @@
     "apollo-link-error": "^1.0.7",
     "apollo-link-http": "^1.5.3",
     "apollo-link-ws": "^1.0.7",
-    "apollo-logger": "^0.1.1",
+    "apollo-logger": "^0.3.0",
     "graphql": "^0.13.1",
     "graphql-tag": "^2.8.0",
     "graphql-tools": "^2.21.0",
