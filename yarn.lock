@@ -1172,13 +1172,6 @@ cross-fetch@2.0.0:
 
 cross-fetch@^1.0.0:
   version "1.1.1"
-  resolved "http://registry.npm.taobao.org/cross-fetch/download/cross-fetch-1.1.1.tgz#dede6865ae30f37eae62ac90ebb7bdac002b05a0"
-  dependencies:
-    node-fetch "1.7.3"
-    whatwg-fetch "2.0.3"
-
-cross-fetch@^1.0.0:
-  version "1.1.1"
   resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-1.1.1.tgz#dede6865ae30f37eae62ac90ebb7bdac002b05a0"
   dependencies:
     node-fetch "1.7.3"
@@ -1872,7 +1865,7 @@ hoek@2.x.x:
   version "2.16.3"
   resolved "http://registry.npm.taobao.org/hoek/download/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
 
-hoist-non-react-statics@^2.2.0, hoist-non-react-statics@^2.3.0:
+hoist-non-react-statics@^2.3.0:
   version "2.3.1"
   resolved "http://registry.npm.taobao.org/hoist-non-react-statics/download/hoist-non-react-statics-2.3.1.tgz#343db84c6018c650778898240135a1420ee22ce0"
 
@@ -2269,10 +2262,6 @@ lodash.assign@^4.2.0:
   version "4.2.0"
   resolved "http://registry.npm.taobao.org/lodash.assign/download/lodash.assign-4.2.0.tgz#0d99f3ccd7a6d261d19bdaeb9245005d285808e7"
 
-lodash.flowright@^3.5.0:
-  version "3.5.0"
-  resolved "http://registry.npm.taobao.org/lodash.flowright/download/lodash.flowright-3.5.0.tgz#2b5fff399716d7e7dc5724fe9349f67065184d67"
-
 lodash.isobject@^3.0.2:
   version "3.0.2"
   resolved "http://registry.npm.taobao.org/lodash.isobject/download/lodash.isobject-3.0.2.tgz#3c8fb8d5b5bf4bf90ae06e14f2a530a4ed935e1d"
@@ -2281,17 +2270,13 @@ lodash.isstring@^4.0.1:
   version "4.0.1"
   resolved "http://registry.npm.taobao.org/lodash.isstring/download/lodash.isstring-4.0.1.tgz#d527dfb5456eca7cc9bb95d5daeaf88ba54a5451"
 
-lodash.pick@^4.4.0:
-  version "4.4.0"
-  resolved "http://registry.npm.taobao.org/lodash.pick/download/lodash.pick-4.4.0.tgz#52f05610fff9ded422611441ed1fc123a03001b3"
+lodash@4.17.5, lodash@^4.17.5:
+  version "4.17.5"
+  resolved "http://registry.npm.taobao.org/lodash/download/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
 lodash@^4.11.1, lodash@^4.15.0, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0:
   version "4.17.4"
   resolved "http://registry.npm.taobao.org/lodash/download/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
-
-lodash@^4.17.5:
-  version "4.17.5"
-  resolved "http://registry.npm.taobao.org/lodash/download/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
 loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.2.0, loose-envify@^1.3.1:
   version "1.3.1"
@@ -2626,7 +2611,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0:
+prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.6.0:
   version "15.6.0"
   resolved "http://registry.npm.taobao.org/prop-types/download/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -2663,15 +2648,14 @@ rc@^1.1.7:
     strip-json-comments "~2.0.1"
 
 react-apollo@^2.0.4:
-  version "2.0.4"
-  resolved "http://registry.npm.taobao.org/react-apollo/download/react-apollo-2.0.4.tgz#01dd32a8e388672f5d7385b21cdd0b94009ee9ee"
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.1.4.tgz#a51059ac56f1a7997cad636a5d36398b9c93ff12"
   dependencies:
-    apollo-link "^1.0.0"
-    hoist-non-react-statics "^2.2.0"
-    invariant "^2.2.1"
-    lodash.flowright "^3.5.0"
-    lodash.pick "^4.4.0"
-    prop-types "^15.5.8"
+    fbjs "^0.8.16"
+    hoist-non-react-statics "^2.5.0"
+    invariant "^2.2.2"
+    lodash "4.17.5"
+    prop-types "^15.6.0"
 
 react-dom@^16.2.0:
   version "16.2.0"
