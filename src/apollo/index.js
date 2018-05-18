@@ -35,7 +35,7 @@ export const createApolloClient = ({
   const authFlowLink = withToken.concat(resetToken);
 
   const httpLink = uri || fetch ? new BatchHttpLink({ uri, fetch }) : null;
-  const wsLink = wsLink
+  const wsLink = wsUri
     ? new WebSocketLink({
         uri: wsUri,
         webSocketImpl,
@@ -62,6 +62,7 @@ export const createApolloClient = ({
         )
       : httpLink || wsLink;
 
+  console.log(link);
   client = new ApolloClient({
     connectToDevTools: process.env.NODE_ENV === 'development',
     link: ApolloLink.from((logging ? [new LoggingLink()] : []).concat([authFlowLink, link])),
