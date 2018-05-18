@@ -1,75 +1,70 @@
 import React from 'react';
 import { getOperationAST } from 'graphql';
 import ApolloClient from 'apollo-client';
-import { createApolloFetch } from 'apollo-fetch';
 import { ApolloProvider } from 'react-apollo';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { BatchHttpLink } from 'apollo-link-batch-http';
 import { WebSocketLink } from 'apollo-link-ws';
 import { ApolloLink } from 'apollo-link';
 import { LoggingLink } from 'apollo-logger';
+import { setContext } from 'apollo-link-context';
+import { onError } from 'apollo-link-error';
 
-// import errorAfterware from './middleware/error';
 let client: any;
 
 export const createApolloClient = ({
   uri,
   wsUri,
   webSocketImpl = null,
-  middlewares = [],
-  afterwares = [],
+  tokenHelper = { withToken: () => {}, resetToken: () => {} },
+  fetch = null,
   logging = false
 }) => {
   if (client) {
     return client;
   }
 
-  const fetch = createApolloFetch({ uri });
+  const withToken = setContext((...args) => tokenHelper.withToken(...args));
 
-  fetch.batchUse(({ requests, options }, next) => {
-    try {
-      options.credentials = 'include';
-      options.headers = options.headers || {};
-      for (const middleware of middlewares) {
-        for (const req of requests) {
-          middleware(req, options);
+  const resetToken = onError(({ networkError, ...errorHandler }) => {
+    if (networkError && networkError.statusCode === 401) {
+      tokenHelper.resetToken({ ...errorHandler, networkError });
+    }
+  });
+
+  const authFlowLink = withToken.concat(resetToken);
+
+  const httpLink = uri || fetch ? new BatchHttpLink({ uri, fetch }) : null;
+  const wsLink = wsLink
+    ? new WebSocketLink({
+        uri: wsUri,
+        webSocketImpl,
+        options: {
+          reconnect: true
         }
-      }
-    } catch (e) {
-      console.error(e);
-    }
-    next();
-  });
-
-  fetch.batchUseAfter(({ response, options }, next) => {
-    try {
-      for (const afterware of afterwares) {
-        afterware(response, options);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-    next();
-  });
-
-  const link = ApolloLink.split(
-    operation => {
-      const operationAST = getOperationAST(operation.query, operation.operationName);
-      return !!operationAST && operationAST.operation === 'subscription';
-    },
-    new WebSocketLink({
-      uri: wsUri,
-      webSocketImpl,
-      options: {
-        reconnect: true
-      }
-    }),
-    new BatchHttpLink({ fetch })
-  );
+      })
+    : null;
+  const link =
+    httpLink && wsLink
+      ? ApolloLink.split(
+          operation => {
+            const operationAST = getOperationAST(operation.query, operation.operationName);
+            return !!operationAST && operationAST.operation === 'subscription';
+          },
+          new WebSocketLink({
+            uri: wsUri,
+            webSocketImpl,
+            options: {
+              reconnect: true
+            }
+          }),
+          httpLink
+        )
+      : httpLink || wsLink;
 
   client = new ApolloClient({
     connectToDevTools: process.env.NODE_ENV === 'development',
-    link: ApolloLink.from((logging ? [new LoggingLink()] : []).concat([link])),
+    link: ApolloLink.from((logging ? [new LoggingLink()] : []).concat([authFlowLink, link])),
     cache: new InMemoryCache({
       dataIdFromObject: r => (r.id && `${r.__typename}:${r.id}`) || null
     })
