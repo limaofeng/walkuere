@@ -1,10 +1,13 @@
 /* eslint no-useless-escape: 0 */
 import React from 'react';
-import { Route as OriginalRoute } from 'react-router-dom';
+import { Route as OriginalRoute, RouteComponentProps } from 'react-router-dom';
 
-import Bundle from './Bundle';
+import Bundle, { LazyModule } from './Bundle';
 
-function argumentNames(fn) {
+function argumentNames(fn?: LazyModule) {
+  if (fn == null) {
+    return [];
+  }
   const names = fn
     .toString()
     .match(/^[\s\(]*function[^(]*\(([^\)]*)\)/)[1]
@@ -13,14 +16,14 @@ function argumentNames(fn) {
   return names.length === 1 && !names[0] ? [] : names;
 }
 
-function isLazyLoadComponent(fn) {
+function isLazyLoadComponent(fn?: LazyModule) {
   const names = argumentNames(fn);
   return names.length === 1 && names[0] === 'cb';
 }
 
-const lazyLoadComponent = lazyModule =>
+const lazyLoadComponent = (lazyModule?: LazyModule): any =>
   lazyModule.lazyRouteComponent ||
-  (props => <Bundle load={lazyModule}>{Container => <Container {...props} />}</Bundle>);
+  ((props: any) => <Bundle load={lazyModule}>{(Container: any) => <Container {...props} />}</Bundle>);
 
 export default class Route extends OriginalRoute {
   render() {

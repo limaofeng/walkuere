@@ -1,8 +1,19 @@
+import React from 'react';
 import { Component } from 'react';
-import PropTypes from 'prop-types';
+import { RouteComponentProps } from 'react-router-dom';
 
-class Bundle extends Component {
-  constructor(props) {
+export type LazyModule = React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any> | any;
+
+interface Props {
+  load: LazyModule;
+  children: any;
+}
+interface State {
+  mod?: any;
+}
+
+class Bundle extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       mod: null
@@ -13,19 +24,19 @@ class Bundle extends Component {
     this.load(this.props);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: Props) {
     if (nextProps.load !== this.props.load) {
       this.load(nextProps);
     }
   }
 
-  load({ load }) {
+  load({ load }: Props) {
     // 重置状态
     this.setState({
       mod: null
     });
     // 传入组件的组件
-    load(mod => {
+    load((mod: any) => {
       load.lazyRouteComponent = mod.default ? mod.default : mod;
       this.setState({
         // handle both es imports and cjs
@@ -39,10 +50,5 @@ class Bundle extends Component {
     return this.state.mod ? this.props.children(this.state.mod) : null;
   }
 }
-
-Bundle.propTypes = {
-  load: PropTypes.func.isRequired,
-  children: PropTypes.func.isRequired
-};
 
 export default Bundle;

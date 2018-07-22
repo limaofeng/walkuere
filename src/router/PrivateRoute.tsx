@@ -1,12 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, RouteProps } from 'react-router-dom';
 
-const mapStateToProps = ({ auth: { isAuthenticated } }) => ({
-  isAuthenticated
-});
+export interface Props extends RouteProps {
+  isAuthenticated: boolean;
+  to: string;
+  component: any;
+  routes: any;
+}
 
-class PrivateRoute extends Route {
+class PrivateRoute extends Route<Props> {
   render() {
     const { isAuthenticated, ...route } = this.props;
     if (route.to) {
@@ -27,4 +29,4 @@ class PrivateRoute extends Route {
   }
 }
 
-export default connect(mapStateToProps)(PrivateRoute);
+export default PrivateRoute;
