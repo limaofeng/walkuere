@@ -1715,6 +1715,10 @@ tsutils@^2.13.1, tsutils@^2.27.2:
   dependencies:
     tslib "^1.8.1"
 
+typescript@^2.9.2:
+  version "2.9.2"
+  resolved "https://npm.zbsg.com.cn/typescript/-/typescript-2.9.2.tgz#1cbf61d05d6b96269244eb6a3bce4bd914e0f00c"
+
 ua-parser-js@^0.7.18:
   version "0.7.18"
   resolved "https://npm.zbsg.com.cn/ua-parser-js/-/ua-parser-js-0.7.18.tgz#a7bfd92f56edfb117083b69e31d2aa8882d4b1ed"
