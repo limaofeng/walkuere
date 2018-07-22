@@ -9,7 +9,7 @@ cache:
 
 install:
   - yarn
-  - yarn global add codacy-coverage
+  - yarn global add codacy-coverage 
   
 script:
   - yarn build

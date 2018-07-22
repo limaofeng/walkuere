@@ -1,7 +1,7 @@
+import { LOCATION_CHANGE, routerMiddleware } from 'connected-react-router';
 import { History, Location as OriginalLocation } from 'history';
-import { Middleware } from 'redux';
 import createBrowserHistory from 'history/createBrowserHistory';
-import { routerMiddleware, LOCATION_CHANGE } from 'connected-react-router';
+import { Middleware } from 'redux';
 
 export function parseQueryString(url: string) {
   const query = url.indexOf('?') > -1 ? url.replace(/^[^\\?]{0,}\??/, '') : url;

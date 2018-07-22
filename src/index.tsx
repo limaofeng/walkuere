@@ -1,34 +1,33 @@
-import * as React from 'react';
-import { Middleware } from 'redux';
-import { Provider } from 'react-redux';
-import { ApolloProvider } from 'react-apollo';
 import { ConnectedRouter, connectRouter } from 'connected-react-router';
+import * as React from 'react';
+import { ApolloProvider } from 'react-apollo';
+import { Provider } from 'react-redux';
 import { Switch } from 'react-router-dom';
-import { Persistor } from 'redux-persist';
+import { Middleware } from 'redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import { routerMiddlewares, createHistory, RouteConfigs } from './router';
+import { createHistory, RouteConfigs, routerMiddlewares } from './router';
 
 import { configureStore, ReduxConfigs } from './redux';
-import { run as runSubscription } from './redux/subscription';
 import createPromiseMiddleware from './redux/createPromiseMiddleware';
+import { run as runSubscription } from './redux/subscription';
 
-import { Feature } from './connector';
 import { configureClient, GraphqlConfigs } from './apollo';
+import { Feature } from './connector';
 
 export { default as Feature, Module } from './connector';
-export const { default: redux, createReduxStore } = require('./redux');
-export const { default: apollo, createApolloClient: createClient } = require('./apollo');
+export { default as redux, configureStore } from './redux';
+export { default as apollo, configureClient } from './apollo';
 
 export { PrivateRoute, Route } from './router';
 
-export type AppX = {
+export interface AppX {
   modules: Feature;
-};
+}
 
-export type InitialState = {
+export interface InitialState {
   [key: string]: any;
-};
+}
 
 interface Options {
   modules: Feature;
@@ -49,7 +48,9 @@ export default (options: Options) => {
     routeConfigs,
     graphqlConfigs,
     reduxConfigs,
+    // tslint:disable-next-line:no-empty
     onError = () => {},
+    // tslint:disable-next-line:no-empty
     onLoad = () => {}
   } = options;
   const app: AppX = { modules };
@@ -80,14 +81,15 @@ export default (options: Options) => {
   const client = configureClient(graphqlConfigs);
 
   return class App extends React.Component {
-    componentWillMount() {
+    public componentWillMount() {
+      // tslint:disable-next-line:no-console
       console.log('app is running.');
     }
 
-    render() {
+    public render() {
       return (
         <Provider store={store}>
-          <PersistGate loading={null} persistor={store.persistor}>
+          <PersistGate loading={undefined} persistor={store.persistor}>
             <ApolloProvider client={client}>
               <ConnectedRouter history={history}>
                 <Switch>{routes.map(component => React.cloneElement(component, { key: component.props.path }))}</Switch>
