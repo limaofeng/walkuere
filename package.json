@@ -5,8 +5,8 @@
   "main": "./dist/index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
-    "build": "webpack --mode production",
-    "build:lib": "babel src --out-dir lib",
+    "build": "npm run build:lib && npm run build:umd && npm run build:umd:min",
+    "build:lib": "tsc",
     "build:umd": "webpack --config webpack.config.js --output-filename index.js --mode development",
     "build:umd:min": "webpack --config webpack.config.js --output-filename index.min.js  --mode production",
     "clean": "rimraf lib dist",
