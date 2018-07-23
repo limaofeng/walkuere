@@ -54,7 +54,7 @@ export default (options: WalkuereOptions) => {
     onLoad = () => {}
   } = options;
   const app: AppX = { modules };
-  const history = createHistory(routeConfigs || {});
+  const history = createHistory(routeConfigs);
 
   const { routes, reducers, effects } = modules;
   const { middleware: promiseMiddleware, resolve, reject } = createPromiseMiddleware(app);

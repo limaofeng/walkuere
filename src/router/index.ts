@@ -37,9 +37,9 @@ export interface Location extends OriginalLocation {
   query: { [key: string]: any };
 }
 
-export const createHistory = ({ basename = '/' }): History => {
+export const createHistory = (configs: RouteConfigs = { basename: '/' }): History => {
   const history = createBrowserHistory({
-    basename
+    basename: configs.basename
   });
   const location: Location = history.location as Location;
   location.query = parseQueryString(history.location.search);
