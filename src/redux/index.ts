@@ -71,7 +71,7 @@ export const configureStore = (
   const persistPromise = new Promise(resolve => {
     done = resolve;
   });
-  partially.partially = persistStore(partially, undefined, () => {
+  partially.persistor = persistStore(partially, undefined, () => {
     if (!!done) {
       done();
     }
