@@ -37,7 +37,7 @@ type Effect = () => IterableIterator<ForkEffect>;
 
 export class Feature implements Iterable<Module> {
   private modules: Module[];
-  constructor(module: Module, ...features: Feature[]) {
+  constructor(module: Module | Feature, ...features: Feature[]) {
     if (!(module instanceof Feature)) {
       this.modules = [module];
     } else {
