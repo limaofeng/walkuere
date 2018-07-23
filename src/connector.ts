@@ -33,7 +33,7 @@ export class Feature implements Iterable<Module> {
   get reducers() {
     return merge.apply(
       this,
-      ...combine(this.modules.filter(m => !!m.namespace), (m: Module) => ({
+      combine(this.modules.filter(m => !!m.namespace), (m: Module) => ({
         [m.namespace as string]: getReducer(m.reducers, m.state, m)
       }))
     );
@@ -54,7 +54,7 @@ export class Feature implements Iterable<Module> {
       next() {
         return {
           value: values[index],
-          done: index++ >= values.length,
+          done: index++ >= values.length
         };
       }
     };

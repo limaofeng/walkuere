@@ -1,8 +1,0 @@
-#!/usr/bin/env node
-'use strict';
-
-require('babel-core/register');
-
-var current_path = process.cwd();
-
-require(current_path + '/test/' + process.argv[2]);
