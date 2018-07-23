@@ -1,6 +1,6 @@
 {
   "name": "walkuere",
-  "version": "1.0.28",
+  "version": "1.0.29",
   "description": "walkuere",
   "main": "./dist/index.js",
   "typings": "./lib/index.d.ts",
