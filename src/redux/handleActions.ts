@@ -1,4 +1,4 @@
-import { AnyAction, Reducer, Action } from 'redux';
+import { Action, AnyAction, Reducer } from 'redux';
 import { InitialState, Module } from './../index';
 import prefixType from './prefixType';
 
@@ -20,7 +20,7 @@ function reduceReducers(...reducers: Reducer[]): Reducer {
   return (state, action) => reducers.reduce((p, r) => r(p, action), state);
 }
 
-function handleActions(handlers: {[key: string]: Reducer }, defaultState: InitialState, module: Module): Reducer {
+function handleActions(handlers: { [key: string]: Reducer }, defaultState: InitialState, module: Module): Reducer {
   const reducers = Object.keys(handlers).map(type => handleAction(prefixType(type, module), handlers[type]));
   const reducer = reduceReducers(...reducers);
   return (state = defaultState, action) => reducer(state, action);

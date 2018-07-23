@@ -14,6 +14,8 @@ describe('Connector', () => {
     }
   });
 
+  const x = new Connector(feature, feature);
+
   it('reducers', async () => {
     expect(feature.reducers.home).not.toBeUndefined();
   });

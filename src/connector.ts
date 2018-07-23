@@ -1,6 +1,7 @@
 /* eslint-disable no-plusplus, prefer-rest-params, no-unused-vars, require-yield */
 import { castArray, map, merge, union, without } from 'lodash';
-import { Reducer } from 'redux';
+import { Route } from 'react-router';
+import { Action, Dispatch, ReducersMapObject, Store } from 'redux';
 import { ForkEffect } from 'redux-saga/effects';
 import getReducer from './redux/getReducer';
 import getSaga from './redux/getSaga';
@@ -8,13 +9,29 @@ import getSaga from './redux/getSaga';
 const combine = (features: any[], extractor: (value: any) => any) =>
   without(union(...map(features, (res: any) => castArray(extractor(res)))), undefined);
 
-export interface Module {
+export interface InAction<P = any> extends Action<string> {
+  payload: P;
+}
+
+interface PubArgs {
+  dispatch: Dispatch;
+  state: any;
+  store: Store;
+}
+
+export type PubReducer = (args: PubArgs, action: any) => any;
+
+export interface Subscription {
+  [event: string]: PubReducer;
+}
+
+export interface Module<S = any> {
   namespace?: string;
-  state?: any;
-  reducers?: { [key: string]: Reducer };
+  state?: S;
+  reducers?: ReducersMapObject<S, InAction>;
   effects?: any;
-  subscriptions?: any;
-  routes?: any;
+  subscriptions?: Subscription;
+  routes?: Route | Route[];
   [key: string]: any;
 }
 
@@ -22,7 +39,7 @@ type Effect = () => IterableIterator<ForkEffect>;
 
 export class Feature implements Iterable<Module> {
   private modules: Module[];
-  constructor(module: Module | Feature, ...features: Feature[]) {
+  constructor(module: Module, ...features: Feature[]) {
     if (!(module instanceof Feature)) {
       this.modules = [module];
     } else {
