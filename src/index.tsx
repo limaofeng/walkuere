@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ApolloProvider } from 'react-apollo';
 import { Provider } from 'react-redux';
 import { Switch } from 'react-router-dom';
-import { Middleware, Dispatch, AnyAction } from 'redux';
+import { AnyAction, Dispatch, Middleware } from 'redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { createHistory, RouteConfigs, routerMiddlewares } from './router';
@@ -15,7 +15,7 @@ import { run as runSubscription } from './redux/subscription';
 import { configureClient, GraphqlConfigs } from './apollo';
 import { Feature } from './connector';
 
-export { default as Feature, Module } from './connector';
+export { default as Feature, Module, InAction, PubReducer } from './connector';
 export { default as redux, configureStore } from './redux';
 export { default as apollo, configureClient } from './apollo';
 

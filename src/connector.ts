@@ -1,6 +1,4 @@
-/* eslint-disable no-plusplus, prefer-rest-params, no-unused-vars, require-yield */
 import { castArray, map, merge, union, without } from 'lodash';
-import { Route } from 'react-router';
 import { Action, Dispatch, ReducersMapObject, Store } from 'redux';
 import { ForkEffect } from 'redux-saga/effects';
 import getReducer from './redux/getReducer';
@@ -31,7 +29,7 @@ export interface Module<S = any> {
   reducers?: ReducersMapObject<S, InAction>;
   effects?: any;
   subscriptions?: Subscription;
-  routes?: Route | Route[];
+  routes?: JSX.Element;
   [key: string]: any;
 }
 
