@@ -1,5 +1,6 @@
 /* eslint-disable func-names, generator-star-spacing, prefer-destructuring, no-param-reassign */
 import { takeEvery, takeLatest, throttle } from 'redux-saga';
+import { ForkEffect } from 'redux-saga/effects';
 import * as sagaEffects from 'redux-saga/effects';
 import { Action } from '../../node_modules/redux';
 import { Module } from '../connector';
@@ -21,7 +22,7 @@ const invariant = (shouldBeTrue: boolean, message: string) => {
   }
 };
 
-export default function getSaga(resolve: any, reject: any, effects: any, model: Module, onError: any, onEffect: any) {
+export default function getSaga(resolve: any, reject: any, effects: any, model: Module, onError: any, onEffect: any): () => IterableIterator<ForkEffect> {
   return function*() {
     for (const key in effects) {
       if (Object.prototype.hasOwnProperty.call(effects, key)) {
@@ -44,6 +45,7 @@ export default function getSaga(resolve: any, reject: any, effects: any, model: 
   };
 }
 
+// tslint:disable-next-line:variable-name
 function getWatcher(resolve: any, reject: any, key: string, _effect: any, model: Module, onError: any, onEffect: any) {
   let effect = _effect;
   let type = 'takeEvery';
@@ -121,7 +123,9 @@ function createEffects(model: Module) {
   return { ...sagaEffects, put, take };
 }
 
-function applyOnEffect(fns: Function[], effect: any, model: Module, key: string) {
+type ApplyOnEffect = (effect: any, sagaEffects: any, model: Module, key: string) => any;
+
+function applyOnEffect(fns: ApplyOnEffect[], effect: any, model: Module, key: string) {
   for (const fn of fns) {
     effect = fn(effect, sagaEffects, model, key);
   }

@@ -1,6 +1,7 @@
 /* eslint-disable no-plusplus, prefer-rest-params, no-unused-vars, require-yield */
 import { castArray, map, merge, union, without } from 'lodash';
 import { Reducer } from 'redux';
+import { ForkEffect } from 'redux-saga/effects';
 import getReducer from './redux/getReducer';
 import getSaga from './redux/getSaga';
 
@@ -17,8 +18,7 @@ export interface Module {
   [key: string]: any;
 }
 
-// { namespace = undefined, state: initialState = {}, reducers = {}, effects, subscriptions, routes, ...props },
-//     ...features
+type Effect = () => IterableIterator<ForkEffect>;
 
 export class Feature implements Iterable<Module> {
   private modules: Module[];
@@ -60,7 +60,7 @@ export class Feature implements Iterable<Module> {
     };
   };
 
-  public effects = (resolve: Function, reject: Function, onError: Function) =>
+  public effects = (resolve: any, reject: any, onError: any): Effect[] =>
     this.modules.filter(m => m.effects).map(m => getSaga(resolve, reject, m.effects, m, onError, []));
 
   public filter = (callbackfn: (value: Module) => boolean) => this.modules.filter(callbackfn);

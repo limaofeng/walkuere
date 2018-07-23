@@ -1,7 +1,7 @@
 import { LOCATION_CHANGE, routerMiddleware } from 'connected-react-router';
 import { History, Location as OriginalLocation } from 'history';
 import createBrowserHistory from 'history/createBrowserHistory';
-import { Middleware } from 'redux';
+import { AnyAction, Dispatch, Middleware } from 'redux';
 
 export function parseQueryString(url: string) {
   const query = url.indexOf('?') > -1 ? url.replace(/^[^\\?]{0,}\??/, '') : url;
@@ -10,8 +10,8 @@ export function parseQueryString(url: string) {
     return data;
   }
   const pairs = query.split(/[;&]/);
-  for (let i = 0; i < pairs.length; i++) {
-    const KeyVal = pairs[i].split('=');
+  for (const pair of pairs) {
+    const KeyVal = pair.split('=');
     if (!KeyVal || KeyVal.length !== 2) {
       continue; // eslint-disable-line
     }
@@ -41,7 +41,7 @@ export const createHistory = ({ basename = '/' }): History => {
   const history = createBrowserHistory({
     basename
   });
-  const location: Location = <Location>history.location;
+  const location: Location = history.location as Location;
   location.query = parseQueryString(history.location.search);
   return history;
 };
@@ -57,11 +57,11 @@ const compatibleRouterMiddleware: Middleware = () => next => action => {
   return next(action);
 };
 
-export const PrivateRoute = require('./PrivateRoute').default;
+export { default as PrivateRoute } from './PrivateRoute';
 
-export const Route = require('./Route').default;
+export { default as Route } from './Route';
 
-export const routerMiddlewares = (history: History): Middleware[] => [
+export const routerMiddlewares = (history: History): Array<Middleware<{}, any, Dispatch<AnyAction>>> => [
   routerMiddleware(history),
   compatibleRouterMiddleware
 ];

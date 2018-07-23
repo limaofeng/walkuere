@@ -4,6 +4,7 @@ import {
   combineReducers,
   compose,
   createStore,
+  Dispatch,
   Middleware,
   Reducer,
   ReducersMapObject,
@@ -13,7 +14,7 @@ import {
 import logger from 'redux-logger';
 import { persistCombineReducers, PersistConfig, Persistor, persistStore, Storage, WebStorage } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import createSagaMiddleware from 'redux-saga';
+import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
 import thunk from 'redux-thunk';
 
 function getDebugSessionKey(): string {
@@ -21,7 +22,7 @@ function getDebugSessionKey(): string {
   return matches && matches.length > 0 ? matches[1] : 'unknown';
 }
 
-export const saga = createSagaMiddleware();
+export const saga: SagaMiddleware<any> = createSagaMiddleware();
 
 // tslint:disable-next-line:interface-name
 export interface CustomStore extends Store {
@@ -40,9 +41,9 @@ export interface ReduxConfigs {
 
 let store: CustomStore;
 export const configureStore = (
-  reducers: ReducersMapObject = {},
+  reducers: ReducersMapObject<any, AnyAction> = {},
   initialState = {},
-  middlewares: Middleware[] = [],
+  middlewares: Array<Middleware<{}, any, Dispatch<AnyAction>>> = [],
   configs: ReduxConfigs
 ) => {
   const {
