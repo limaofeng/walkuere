@@ -1,9 +1,6 @@
 /* eslint-disable no-plusplus, prefer-rest-params, no-unused-vars, require-yield */
-import React from 'react';
+import { castArray, map, merge, union, without } from 'lodash';
 import { Reducer } from 'redux';
-import { merge, map, union, without, castArray } from 'lodash';
-import { call, put } from 'redux-saga/effects';
-
 import getReducer from './redux/getReducer';
 import getSaga from './redux/getSaga';
 
@@ -37,7 +34,7 @@ export class Feature implements Iterable<Module> {
     return merge.apply(
       this,
       ...combine(this.modules.filter(m => !!m.namespace), (m: Module) => ({
-        [<string>m.namespace]: getReducer(m.reducers, m.state, m)
+        [m.namespace as string]: getReducer(m.reducers, m.state, m)
       }))
     );
   }
@@ -50,25 +47,25 @@ export class Feature implements Iterable<Module> {
     return this.modules.length;
   }
 
-  [Symbol.iterator] = () => {
+  public [Symbol.iterator] = () => {
     const values = this.modules;
     let index = 0;
     return {
       next() {
         return {
-          value: values[index],
-          done: index++ >= values.length
+          done: index++ >= values.length,
+          value: values[index]
         };
       }
     };
   };
 
-  effects = (resolve: Function, reject: Function, onError: Function) =>
+  public effects = (resolve: Function, reject: Function, onError: Function) =>
     this.modules.filter(m => m.effects).map(m => getSaga(resolve, reject, m.effects, m, onError, []));
 
-  filter = (callbackfn: (value: Module) => boolean) => this.modules.filter(callbackfn);
+  public filter = (callbackfn: (value: Module) => boolean) => this.modules.filter(callbackfn);
 
-  get = (key: string) => combine(this.modules, m => m[key] || []);
+  public get = (key: string) => combine(this.modules, m => m[key] || []);
 }
 
 export default Feature;

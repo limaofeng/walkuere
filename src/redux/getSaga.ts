@@ -1,22 +1,22 @@
 /* eslint-disable func-names, generator-star-spacing, prefer-destructuring, no-param-reassign */
-import * as sagaEffects from 'redux-saga/effects';
-
 import { takeEvery, takeLatest, throttle } from 'redux-saga';
-
-import prefixType from './prefixType';
-import { Module } from '../connector';
+import * as sagaEffects from 'redux-saga/effects';
 import { Action } from '../../node_modules/redux';
+import { Module } from '../connector';
+import prefixType from './prefixType';
 
 const NAMESPACE_SEP = '/';
 
 const warning = (shouldBeTrue: boolean, message: string) => {
   if (shouldBeTrue) {
+    // tslint:disable-next-line:no-console
     console.warn(message);
   }
 };
 
 const invariant = (shouldBeTrue: boolean, message: string) => {
   if (shouldBeTrue) {
+    // tslint:disable-next-line:no-console
     console.error(message);
   }
 };
