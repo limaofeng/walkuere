@@ -4,6 +4,7 @@
     "exclude": ["config/**/*.js", "node_modules/**/*.ts"]
   },
   "rules": {
+    "object-literal-sort-keys": false,
     "interface-name":false,
     "class-name": true,
     "comment-format": [true, "check-space"],

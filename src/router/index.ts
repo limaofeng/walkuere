@@ -30,7 +30,7 @@ export function parseQueryString(url: string) {
 }
 
 export interface RouteConfigs {
-  basename: string;
+  basename?: string;
 }
 
 export interface Location extends OriginalLocation {

@@ -10,11 +10,11 @@ const combine = (features: any[], extractor: (value: any) => any) =>
 
 export interface Module {
   namespace?: string;
-  state: any;
-  reducers: { [key: string]: Reducer };
-  effects: any;
-  subscriptions: any;
-  routes: any;
+  state?: any;
+  reducers?: { [key: string]: Reducer };
+  effects?: any;
+  subscriptions?: any;
+  routes?: any;
   [key: string]: any;
 }
 

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ApolloProvider } from 'react-apollo';
 import { Provider } from 'react-redux';
 import { Switch } from 'react-router-dom';
-import { Middleware } from 'redux';
+import { Middleware, Dispatch, AnyAction } from 'redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { createHistory, RouteConfigs, routerMiddlewares } from './router';
@@ -29,18 +29,18 @@ export interface InitialState {
   [key: string]: any;
 }
 
-interface Options {
+interface WalkuereOptions {
   modules: Feature;
-  initialState: any;
-  middlewares: Middleware[];
+  initialState?: any;
+  middlewares?: Array<Middleware<{}, any, Dispatch<AnyAction>>>;
   routeConfigs?: RouteConfigs;
-  graphqlConfigs: GraphqlConfigs;
+  graphqlConfigs?: GraphqlConfigs;
   reduxConfigs?: ReduxConfigs;
-  onError: (error: Error) => void;
-  onLoad: (app: AppX) => void;
+  onError?: (error: Error) => void;
+  onLoad?: (app: AppX) => void;
 }
 
-export default (options: Options) => {
+export default (options: WalkuereOptions) => {
   const {
     modules,
     initialState = {},
@@ -78,7 +78,16 @@ export default (options: Options) => {
     onLoad(app);
   });
 
-  const client = configureClient(graphqlConfigs);
+  let body = (
+    <ConnectedRouter history={history}>
+      <Switch>{routes.map(component => React.cloneElement(component, { key: component.props.path }))}</Switch>
+    </ConnectedRouter>
+  );
+
+  if (graphqlConfigs !== undefined) {
+    const client = configureClient(graphqlConfigs);
+    body = <ApolloProvider client={client}>{body}</ApolloProvider>;
+  }
 
   return class App extends React.Component {
     public componentWillMount() {
@@ -90,11 +99,7 @@ export default (options: Options) => {
       return (
         <Provider store={store}>
           <PersistGate loading={undefined} persistor={store.persistor}>
-            <ApolloProvider client={client}>
-              <ConnectedRouter history={history}>
-                <Switch>{routes.map(component => React.cloneElement(component, { key: component.props.path }))}</Switch>
-              </ConnectedRouter>
-            </ApolloProvider>
+            {body}
           </PersistGate>
         </Provider>
       );
