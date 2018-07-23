@@ -53,8 +53,8 @@ export class Feature implements Iterable<Module> {
     return {
       next() {
         return {
+          value: values[index],
           done: index++ >= values.length,
-          value: values[index]
         };
       }
     };
