@@ -10,12 +10,29 @@ import { getOperationAST } from 'graphql/utilities/getOperationAST';
 let client: any;
 
 export interface GraphqlConfigs {
+  /**
+   * Graphql Endpoint
+   */
   uri?: string;
+  /**
+   * Graphql WebSocket Endpoint
+   */
   wsUri?: string;
+  /**
+   * WebSocket Implement
+   */
   webSocketImpl?: any;
+  /**
+   * ApolloLink
+   */
   links?: ApolloLink[];
-  tokenHelper?: TokenHelper;
+  /**
+   * Fetch Implement
+   */
   fetch?: any;
+  /**
+   * Enable Logger
+   */
   logging?: boolean;
 }
 
@@ -29,14 +46,7 @@ interface TokenHelper {
 }
 
 export const configureClient = (options: GraphqlConfigs) => {
-  const {
-    uri,
-    wsUri,
-    webSocketImpl,
-    links = [],
-    fetch,
-    logging = false
-  } = options;
+  const { uri, wsUri, webSocketImpl, links = [], fetch, logging = false } = options;
   if (client) {
     return client;
   }

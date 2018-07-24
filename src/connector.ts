@@ -24,8 +24,15 @@ export interface Subscription {
 }
 
 export interface Module<S = any> {
+  /**
+   * 命名空间
+   */
   namespace?: string;
+  /**
+   * 状态
+   */
   state?: S;
+
   reducers?: ReducersMapObject<S, InAction>;
   effects?: any;
   subscriptions?: Subscription;

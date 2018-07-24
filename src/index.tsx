@@ -30,10 +30,25 @@ export interface InitialState {
 }
 
 interface WalkuereOptions {
+  /**
+   * 全部的模块
+   */
   modules: Feature;
+  /**
+   * 默认状态
+   */
   initialState?: any;
+  /**
+   * 路由配置
+   */
   routeConfigs?: RouteConfigs;
+  /**
+   * Apollo-Client 配置
+   */
   graphqlConfigs?: GraphqlConfigs;
+  /**
+   * Redux 配置
+   */
   reduxConfigs?: ReduxConfigs;
   onError?: (error: Error) => void;
   onLoad?: (app: AppX) => void;
