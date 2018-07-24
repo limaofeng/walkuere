@@ -1,3 +1,9 @@
 /test
 .babelrc
 .eslintrc
+examples
+src
+tests
+.travis.yml
+webpack.config.js
+tsconfig.json
