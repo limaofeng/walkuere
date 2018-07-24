@@ -32,7 +32,6 @@ export interface InitialState {
 interface WalkuereOptions {
   modules: Feature;
   initialState?: any;
-  middlewares?: Array<Middleware<{}, any, Dispatch<AnyAction>>>;
   routeConfigs?: RouteConfigs;
   graphqlConfigs?: GraphqlConfigs;
   reduxConfigs?: ReduxConfigs;
@@ -44,10 +43,9 @@ export default (options: WalkuereOptions) => {
   const {
     modules,
     initialState = {},
-    middlewares = [],
     routeConfigs,
     graphqlConfigs,
-    reduxConfigs,
+    reduxConfigs = {},
     // tslint:disable-next-line:no-empty
     onError = () => {},
     // tslint:disable-next-line:no-empty
@@ -59,12 +57,11 @@ export default (options: WalkuereOptions) => {
   const { routes, reducers, effects } = modules;
   const { middleware: promiseMiddleware, resolve, reject } = createPromiseMiddleware(app);
 
-  const store = configureStore(
-    reducers,
-    initialState,
-    [...middlewares, ...routerMiddlewares(history), promiseMiddleware],
-    { ...reduxConfigs, connectRouter: connectRouter(history) }
-  );
+  const store = configureStore(reducers, initialState, {
+    ...reduxConfigs,
+    connectRouter: connectRouter(history),
+    middlewares: [...reduxConfigs.middlewares, ...routerMiddlewares(history), promiseMiddleware]
+  });
   store.then(() => {
     // Run sagas
     const sagas = effects(resolve, reject, onError);

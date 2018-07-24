@@ -35,6 +35,7 @@ export interface CustomStore extends Store {
 export interface ReduxConfigs {
   // tslint:disable-next-line:ban-types
   compose?: <R>(...funcs: Function[]) => (...args: any[]) => R;
+  middlewares?: Array<Middleware<{}, any, Dispatch<AnyAction>>>;
   connectRouter?: <S>(reducer: Reducer<S, AnyAction>) => Reducer<S, AnyAction>;
   logging?: boolean;
 }
@@ -43,11 +44,11 @@ let store: CustomStore;
 export const configureStore = (
   reducers: ReducersMapObject<any, AnyAction> = {},
   initialState = {},
-  middlewares: Array<Middleware<{}, any, Dispatch<AnyAction>>> = [],
   configs: ReduxConfigs
 ) => {
   const {
     compose: composeEnhancers = compose,
+    middlewares = [],
     connectRouter = (rootReducer: Reducer) => rootReducer,
     logging = false
   } = configs;
@@ -58,13 +59,13 @@ export const configureStore = (
   const config: PersistConfig = {
     blacklist: ['router'],
     key: 'primary',
-    storage,
+    storage
   };
   const allMiddlewares = [...middlewares, thunk, ...(logging ? [logger] : []), saga];
   const enhancer =
     process.env.NODE_ENV === 'development' && !!(window as any).devToolsExtension
-      ? composeEnhancers(applyMiddleware(...allMiddlewares), (window as any).devToolsExtension()) as StoreEnhancer
-      : composeEnhancers(applyMiddleware(...allMiddlewares)) as StoreEnhancer;
+      ? (composeEnhancers(applyMiddleware(...allMiddlewares), (window as any).devToolsExtension()) as StoreEnhancer)
+      : (composeEnhancers(applyMiddleware(...allMiddlewares)) as StoreEnhancer);
   const partially: any = createStore(connectRouter(persistCombineReducers(config, reducers)), initialState, enhancer);
   // 从 storage 恢复数据
   let done: any;
