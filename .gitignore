@@ -28,3 +28,7 @@ yarn-error.log*
 
 # webstorm
 .idea/
+
+# example
+example/node_modules
+example/dist
