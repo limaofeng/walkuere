@@ -1,5 +1,6 @@
 {
   "name": "todomvc",
+  "main": "src/index.tsx"
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.config.js --mode development --hot",
     "build": "webpack --config config/webpack.config.js --mode production"
