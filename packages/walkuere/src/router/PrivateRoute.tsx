@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect, RouteProps } from 'react-router-dom';
+import { Redirect, Route, RouteProps } from 'react-router-dom';
 
 export interface Props extends RouteProps {
   isAuthenticated: boolean;
@@ -9,7 +9,7 @@ export interface Props extends RouteProps {
 }
 
 class PrivateRoute extends Route<Props> {
-  render() {
+  public render() {
     const { isAuthenticated, ...route } = this.props;
     if (route.to) {
       return <Redirect exact from={route.path} to={route.to} />;

@@ -7,6 +7,9 @@ module.exports = {
     libraryTarget: 'umd'
   },
   externals: {
+    'warning': 'warning',
+    'invariant': 'invariant',
+    'walkuere-core': 'walkuere-core',
     'apollo-cache-inmemory': 'apollo-cache-inmemory',
     'apollo-client': 'apollo-client',
     'apollo-link-batch-http': 'apollo-link-batch-http',
@@ -29,7 +32,10 @@ module.exports = {
     'redux-saga': 'redux-saga',
     'redux-thunk': 'redux-thunk',
     'subscriptions-transport-ws': 'subscriptions-transport-ws',
-    'window': 'window'
+    'window': 'window',
+    'connected-react-router': 'connected-react-router',
+    history: 'history',
+    react: 'react'
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js']

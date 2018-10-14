@@ -3,25 +3,26 @@ import * as React from 'react';
 import { ApolloProvider } from 'react-apollo';
 import { Provider } from 'react-redux';
 import { Switch } from 'react-router-dom';
-import { AnyAction, Dispatch, Middleware } from 'redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import storage from 'redux-persist/lib/storage';
 
 import { createHistory, RouteConfigs, routerMiddlewares } from './router';
 
-import { configureStore, ReduxConfigs } from './redux';
-import createPromiseMiddleware from './redux/createPromiseMiddleware';
-import { run as runSubscription } from './redux/subscription';
+import {
+  configureClient,
+  configureStore,
+  createPromiseMiddleware,
+  Feature,
+  GraphqlConfigs,
+  ReduxConfigs,
+  runSubscription
+} from 'walkuere-core';
 
-import { configureClient, GraphqlConfigs } from './apollo';
-import { Feature } from './connector';
-
-export { default as Feature, Module, InAction, PubReducer } from './connector';
-export { default as redux, configureStore } from './redux';
-export { default as apollo, configureClient } from './apollo';
+export { Feature, Module, InAction, PubReducer } from 'walkuere-core';
 
 export { PrivateRoute, Route } from './router';
 
-export interface AppX {
+export interface Application {
   modules: Feature;
 }
 
@@ -51,7 +52,7 @@ interface WalkuereOptions {
    */
   reduxConfigs?: ReduxConfigs;
   onError?: (error: Error) => void;
-  onLoad?: (app: AppX) => void;
+  onLoad?: (app: Application) => void;
 }
 
 export default (options: WalkuereOptions) => {
@@ -60,26 +61,31 @@ export default (options: WalkuereOptions) => {
     initialState = {},
     routeConfigs,
     graphqlConfigs,
-    reduxConfigs = {},
+    reduxConfigs = { middlewares: [] },
     // tslint:disable-next-line:no-empty
     onError = () => {},
     // tslint:disable-next-line:no-empty
     onLoad = () => {}
   } = options;
-  const app: AppX = { modules };
+  const app: Application = { modules };
   const history = createHistory(routeConfigs);
 
   const { routes, reducers, effects } = modules;
-  const { middleware: promiseMiddleware, resolve, reject } = createPromiseMiddleware(app);
+  const promiseMiddleware = createPromiseMiddleware(app);
 
   const store = configureStore(reducers, initialState, {
     ...reduxConfigs,
     connectRouter: connectRouter(history),
-    middlewares: [...reduxConfigs.middlewares, ...routerMiddlewares(history), promiseMiddleware]
+    persistConfig: {
+      blacklist: ['router'],
+      key: 'primary',
+      storage
+    },
+    middlewares: [...(reduxConfigs.middlewares || []), ...routerMiddlewares(history), promiseMiddleware]
   });
   store.then(() => {
     // Run sagas
-    const sagas = effects(resolve, reject, onError);
+    const sagas = effects(onError);
     sagas.forEach(store.runSaga);
     // Run subscriptions
     for (const module of modules) {

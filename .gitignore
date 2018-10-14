@@ -1,16 +1,17 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+node_modules
 yarn.lock
+package-lock.json
 
 # testing
 /coverage
 
 # production
-/build
-/dist
-/lib
+build
+dist
+lib
 
 # misc
 .DS_Store

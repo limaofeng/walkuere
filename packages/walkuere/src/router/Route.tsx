@@ -5,7 +5,7 @@ import { Route as OriginalRoute, RouteComponentProps } from 'react-router-dom';
 import Bundle, { LazyModule } from './Bundle';
 
 function argumentNames(fn?: LazyModule) {
-  if (fn == null) {
+  if (fn === undefined) {
     return [];
   }
   const names = fn
@@ -26,7 +26,7 @@ const lazyLoadComponent = (lazyModule?: LazyModule): any =>
   ((props: any) => <Bundle load={lazyModule}>{(Container: any) => <Container {...props} />}</Bundle>);
 
 export default class Route extends OriginalRoute {
-  render() {
+  public render() {
     const { component } = this.props;
     return (
       <OriginalRoute

@@ -12,8 +12,7 @@ import {
   StoreEnhancer
 } from 'redux';
 import logger from 'redux-logger';
-import { persistCombineReducers, PersistConfig, Persistor, persistStore, Storage, WebStorage } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { persistCombineReducers, PersistConfig, Persistor, persistStore } from 'redux-persist';
 import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
 import thunk from 'redux-thunk';
 
@@ -31,12 +30,16 @@ export interface CustomStore extends Store {
   then: any;
 }
 
+export { default as createPromiseMiddleware } from './createPromiseMiddleware';
+export { run as runSubscription } from './subscription';
+
 // tslint:disable-next-line:interface-name
 export interface ReduxConfigs {
   // tslint:disable-next-line:ban-types
   compose?: <R>(...funcs: Function[]) => (...args: any[]) => R;
   middlewares?: Array<Middleware<{}, any, Dispatch<AnyAction>>>;
   connectRouter?: <S>(reducer: Reducer<S, AnyAction>) => Reducer<S, AnyAction>;
+  persistConfig: PersistConfig;
   logging?: boolean;
 }
 
@@ -49,6 +52,7 @@ export const configureStore = (
   const {
     compose: composeEnhancers = compose,
     middlewares = [],
+    persistConfig,
     connectRouter = (rootReducer: Reducer) => rootReducer,
     logging = false
   } = configs;
@@ -56,17 +60,16 @@ export const configureStore = (
     store.replaceReducer(combineReducers(reducers));
     return store;
   }
-  const config: PersistConfig = {
-    blacklist: ['router'],
-    key: 'primary',
-    storage
-  };
   const allMiddlewares = [...middlewares, thunk, ...(logging ? [logger] : []), saga];
   const enhancer =
     process.env.NODE_ENV === 'development' && !!(window as any).devToolsExtension
       ? (composeEnhancers(applyMiddleware(...allMiddlewares), (window as any).devToolsExtension()) as StoreEnhancer)
       : (composeEnhancers(applyMiddleware(...allMiddlewares)) as StoreEnhancer);
-  const partially: any = createStore(connectRouter(persistCombineReducers(config, reducers)), initialState, enhancer);
+  const partially: any = createStore(
+    connectRouter(persistCombineReducers(persistConfig, reducers)),
+    initialState,
+    enhancer
+  );
   // 从 storage 恢复数据
   let done: any;
   const persistPromise = new Promise(resolve => {

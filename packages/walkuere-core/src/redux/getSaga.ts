@@ -1,40 +1,24 @@
 /* eslint-disable func-names, generator-star-spacing, prefer-destructuring, no-param-reassign */
-import { takeEvery, takeLatest, throttle } from 'redux-saga';
-import { ForkEffect } from 'redux-saga/effects';
+import { Action } from 'redux';
+import { ForkEffect, takeEvery, takeLatest, throttle } from 'redux-saga/effects';
 import * as sagaEffects from 'redux-saga/effects';
-import { Action } from '../../node_modules/redux';
 import { Module } from '../connector';
 import prefixType from './prefixType';
+import warning from 'warning';
+import invariant from 'invariant';
 
 const NAMESPACE_SEP = '/';
 
-const warning = (shouldBeTrue: boolean, message: string) => {
-  if (shouldBeTrue) {
-    // tslint:disable-next-line:no-console
-    console.warn(message);
-  }
-};
-
-const invariant = (shouldBeTrue: boolean, message: string) => {
-  if (shouldBeTrue) {
-    // tslint:disable-next-line:no-console
-    console.error(message);
-  }
-};
-
-export default function getSaga(resolve: any, reject: any, effects: any, model: Module, onError: any, onEffect: any): () => IterableIterator<ForkEffect> {
+export default function getSaga(
+  effects: any,
+  model: Module,
+  onError: any,
+  onEffect: any
+): () => IterableIterator<ForkEffect> {
   return function*() {
     for (const key in effects) {
       if (Object.prototype.hasOwnProperty.call(effects, key)) {
-        const watcher = getWatcher(
-          resolve,
-          reject,
-          `${model.namespace}${NAMESPACE_SEP}${key}`,
-          effects[key],
-          model,
-          onError,
-          onEffect
-        );
+        const watcher = getWatcher(`${model.namespace}${NAMESPACE_SEP}${key}`, effects[key], model, onError, onEffect);
         const task = yield sagaEffects.fork(watcher);
         yield sagaEffects.fork(function*() {
           yield sagaEffects.take(`${model.namespace}/@@CANCEL_EFFECTS`);
@@ -46,7 +30,7 @@ export default function getSaga(resolve: any, reject: any, effects: any, model: 
 }
 
 // tslint:disable-next-line:variable-name
-function getWatcher(resolve: any, reject: any, key: string, _effect: any, model: Module, onError: any, onEffect: any) {
+function getWatcher(key: string, _effect: any, model: Module, onError: any, onEffect: any) {
   let effect = _effect;
   let type = 'takeEvery';
   let ms: number;
@@ -66,17 +50,23 @@ function getWatcher(resolve: any, reject: any, key: string, _effect: any, model:
     );
   }
 
+  // tslint:disable-next-line:no-empty
+  function noop() {}
+
   function* sagaWithCatch(...args: any[]) {
+    // tslint:disable-next-line:no-shadowed-variable
+    const { resolve = noop, reject = noop } = args.length > 0 ? args[0] : {};
     try {
       yield sagaEffects.put({ type: `${key}${NAMESPACE_SEP}@@start` });
       const ret = yield effect(...args.concat(createEffects(model)));
       yield sagaEffects.put({ type: `${key}${NAMESPACE_SEP}@@end` });
-      resolve(key, ret);
+      resolve(ret);
     } catch (e) {
-      onError(e);
-      if (!e._dontReject) {
-        reject(key, e);
-      }
+      onError(e, {
+        key,
+        effectArgs: args
+      });
+      reject(e);
     }
   }
 

@@ -1,19 +1,10 @@
-import { Dispatch, Action } from 'redux';
+import invariant from 'invariant';
+import { Action, Dispatch } from 'redux';
+import warning from 'warning';
 import { Module } from '../connector';
 import prefixType from './prefixType';
+
 const NAMESPACE_SEP = '/';
-
-const warning = (shouldBeTrue: boolean, message: string) => {
-  if(shouldBeTrue){
-    console.warn(message);
-  }
-}
-
-const invariant = (shouldBeTrue: boolean, message: string) => {
-  if(shouldBeTrue){
-    console.error(message);
-  }
-}
 
 export default function prefixedDispatch(dispatch: Dispatch, module: Module): (action: Action) => Action {
   return action => {

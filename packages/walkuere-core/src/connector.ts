@@ -82,8 +82,8 @@ export class Feature implements Iterable<Module> {
     };
   };
 
-  public effects = (resolve: any, reject: any, onError: any): Effect[] =>
-    this.modules.filter(m => m.effects).map(m => getSaga(resolve, reject, m.effects, m, onError, []));
+  public effects = (onError: any): Effect[] =>
+    this.modules.filter(m => m.effects).map(m => getSaga(m.effects, m, onError, []));
 
   public filter = (callbackfn: (value: Module) => boolean) => this.modules.filter(callbackfn);
 

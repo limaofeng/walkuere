@@ -1,5 +1,5 @@
 import { Action, AnyAction, Reducer } from 'redux';
-import { InitialState, Module } from './../index';
+import { InitialState, Module } from '..';
 import prefixType from './prefixType';
 
 function identify(state: any, action: any): any {

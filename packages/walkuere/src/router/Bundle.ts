@@ -16,24 +16,24 @@ class Bundle extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      mod: null
+      mod: undefined
     };
   }
   // 加载初始状态
-  componentWillMount() {
+  public componentWillMount() {
     this.load(this.props);
   }
 
-  componentWillReceiveProps(nextProps: Props) {
+  public componentWillReceiveProps(nextProps: Props) {
     if (nextProps.load !== this.props.load) {
       this.load(nextProps);
     }
   }
 
-  load({ load }: Props) {
+  public load({ load }: Props) {
     // 重置状态
     this.setState({
-      mod: null
+      mod: undefined
     });
     // 传入组件的组件
     load((mod: any) => {
@@ -45,9 +45,9 @@ class Bundle extends Component<Props, State> {
     });
   }
 
-  render() {
+  public render() {
     // if state mode not undefined,The container will render children
-    return this.state.mod ? this.props.children(this.state.mod) : null;
+    return this.state.mod ? this.props.children(this.state.mod) : undefined;
   }
 }
 
