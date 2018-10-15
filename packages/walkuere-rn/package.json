@@ -47,7 +47,7 @@
     "graphql-tools": "^3.0.5",
     "react": "^16.4.1",
     "react-apollo": "^2.1.9",
-    "react-native": "^0.55.4",
+    "react-native": "^0.57.3",
     "react-navigation": "^2.9.3",
     "react-navigation-redux-helpers": "^2.0.5",
     "react-redux": "^5.0.7",
