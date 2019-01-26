@@ -1,13 +1,9 @@
 {
   "name": "walkuere",
-  "version": "1.1.18",
+  "version": "1.1.19",
   "description": "walkuere",
   "main": "./dist/index.js",
   "typings": "./lib/index.d.ts",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org",
-    "access": "public"
-  },
   "scripts": {
     "build": "npm run build:lib && npm run build:umd && npm run build:umd:min",
     "build:lib": "tsc",
@@ -57,7 +53,7 @@
     "redux-saga": "^1.0.0",
     "redux-thunk": "^2.3.0",
     "subscriptions-transport-ws": "^0.9.15",
-    "walkuere-core": "^1.1.18"
+    "walkuere-core": "^1.1.19"
   },
   "devDependencies": {
     "@types/graphql": "^14.0.5",
