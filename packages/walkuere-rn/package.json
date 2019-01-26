@@ -1,6 +1,6 @@
 {
   "name": "walkuere-rn",
-  "version": "1.1.21",
+  "version": "1.2.0",
   "description": "walkuere-react-native",
   "main": "./dist/index.js",
   "typings": "./lib/index.d.ts",
@@ -57,7 +57,7 @@
     "redux-saga": "^1.0.0",
     "redux-thunk": "^2.3.0",
     "subscriptions-transport-ws": "^0.9.15",
-    "walkuere-core": "^1.1.21"
+    "walkuere-core": "^1.2.0"
   },
   "devDependencies": {
     "@types/graphql": "^14.0.5",
