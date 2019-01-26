@@ -56,7 +56,7 @@ export class Feature implements Iterable<Module> {
     const args = combine(this.modules.filter(m => !!m.namespace), (m: Module) => ({
       [m.namespace as string]: getReducer(m.reducers, m.state, m)
     }));
-    return merge(this, ...args);
+    return merge({}, ...args);
   }
 
   get routes() {
