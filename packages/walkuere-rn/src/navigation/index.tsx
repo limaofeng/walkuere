@@ -31,7 +31,7 @@ export const configureAppNavigator = (
     const mapStateToProps = (state: any) => ({
       state: state.nav
     });
-    return connect(mapStateToProps)(App);
+    return connect(mapStateToProps)(App as any);
   };
 
   return { reducer: { nav: navReducer }, getAppWithNavigation };

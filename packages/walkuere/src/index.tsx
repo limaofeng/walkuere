@@ -75,7 +75,7 @@ export default (options: WalkuereOptions) => {
 
   const store = configureStore(reducers, initialState, {
     ...reduxConfigs,
-    connectRouter: connectRouter(history),
+    connectRouter: connectRouter(history) as any,
     persistConfig: {
       blacklist: ['router'],
       key: 'primary',

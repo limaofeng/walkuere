@@ -12,7 +12,7 @@ class PrivateRoute extends Route<Props> {
   public render() {
     const { isAuthenticated, ...route } = this.props;
     if (route.to) {
-      return <Redirect exact from={route.path} to={route.to} />;
+      return <Redirect exact from={route.path as string} to={route.to} />;
     }
     return (
       <Route

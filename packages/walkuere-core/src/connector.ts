@@ -4,7 +4,7 @@ import { ForkEffect } from 'redux-saga/effects';
 import getReducer from './redux/getReducer';
 import getSaga from './redux/getSaga';
 
-const combine = (features: any[], extractor: (value: any) => any) =>
+const combine = (features: any[], extractor: (value: any) => any): any[] =>
   without(union(...map(features, (res: any) => castArray(extractor(res)))), undefined);
 
 export interface InAction<P = any> extends Action<string> {
@@ -53,12 +53,10 @@ export class Feature implements Iterable<Module> {
   }
 
   get reducers() {
-    return merge.apply(
-      this,
-      combine(this.modules.filter(m => !!m.namespace), (m: Module) => ({
-        [m.namespace as string]: getReducer(m.reducers, m.state, m)
-      }))
-    );
+    const args = combine(this.modules.filter(m => !!m.namespace), (m: Module) => ({
+      [m.namespace as string]: getReducer(m.reducers, m.state, m)
+    }));
+    return merge(this, ...args);
   }
 
   get routes() {

@@ -1,6 +1,6 @@
 {
   "name": "walkuere",
-  "version": "1.1.16",
+  "version": "1.1.17",
   "description": "walkuere",
   "main": "./dist/index.js",
   "typings": "./lib/index.d.ts",
@@ -53,9 +53,10 @@
     "redux-saga": "^1.0.0",
     "redux-thunk": "^2.3.0",
     "subscriptions-transport-ws": "^0.9.15",
-    "walkuere-core": "^1.1.16"
+    "walkuere-core": "^1.1.17"
   },
   "devDependencies": {
+    "@types/graphql": "^14.0.5",
     "@types/jest": "^23.3.13",
     "@types/lodash": "^4.14.120",
     "@types/prop-types": "^15.5.8",
