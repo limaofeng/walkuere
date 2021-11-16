@@ -63,7 +63,7 @@
     "@types/invariant": "^2.2.29",
     "@types/jest": "^26.0.23",
     "@types/lodash": "^4.14.120",
-    "@types/react": "^16.7.20",
+    "@types/react": "^17.0.35",
     "@types/react-redux": "^7.0.1",
     "@types/redux-logger": "^3.0.6",
     "@types/redux-persist": "^4.3.1",
