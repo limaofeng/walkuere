@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/limaofeng/walkuere#readme",
   "peerDependencies": {
-    "react": "^16.7.0"
+    "react": "^18.1.0"
   },
   "dependencies": {
     "apollo-cache-inmemory": "^1.4.2",
@@ -42,7 +42,7 @@
     "graphql-tag": "^2.10.1",
     "graphql-tools": "^4.0.4",
     "history": "^4.7.2",
-    "react": "^16.7.0",
+    "react": "^18.1.0",
     "react-apollo": "^2.4.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^5.2.0",
