@@ -63,7 +63,7 @@
     "@types/graphql": "^14.0.5",
     "@types/jest": "^26.0.23",
     "@types/lodash": "^4.14.120",
-    "@types/react": "^16.7.20",
+    "@types/react": "^18.0.10",
     "@types/react-native": "^0.57.32",
     "@types/react-navigation": "^3.0.1",
     "@types/react-redux": "^7.0.1",
