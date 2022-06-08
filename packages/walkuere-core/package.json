@@ -44,7 +44,7 @@
     "apollo-link-ws": "^1.0.12",
     "graphql": "^14.1.1",
     "graphql-tag": "^2.10.1",
-    "graphql-tools": "^4.0.4",
+    "graphql-tools": "^8.2.12",
     "history": "^4.7.2",
     "invariant": "^2.2.4",
     "react": "^16.7.0",
